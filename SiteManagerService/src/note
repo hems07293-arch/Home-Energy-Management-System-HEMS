@@ -1,0 +1,32 @@
+for applying validation:-
+1.@NonNull :- filed not null rehvi joiee but eni under empty value chale example:-empty string or an empty collection
+2.@NotEmpty:- this emsure that field is non null and also not empty example:- at least one character
+3.@NotBlank:- this is only apply on string and ensure they are not null , not empty and contrain at least one non-whitespace character
+
+
+##note NotEmpty cannot be use in int double or anything
+make sure it is use in only String
+
+and entity per lagadiee validatio tyare NotBlank use nai karvanu baki error avse
+NotBlank only for the string
+
+for entity use NotNull
+
+
+
+Field Type	Correct Annotation
+String	@NotBlank
+List	@NotEmpty
+boolean	@NotNull (use Boolean, not boolean)
+double	@Positive, @Min, @DecimalMin
+Entity reference	@NotNull
+
+note:- string mi size ma validation mate @Min ke @Max use nai thayy e int long and double e badha mate che
+      for string use @Size(max = 50, message = "Name length must not exceed 50")
+
+and use this dependency:-
+	<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+	</dependency>
+

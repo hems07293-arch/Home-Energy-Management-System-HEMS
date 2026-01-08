@@ -1,0 +1,104 @@
+package com.project.hems.SiteManagerService.util;
+
+import com.project.hems.SiteManagerService.dto.*;
+import com.project.hems.SiteManagerService.entity.*;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+@Component
+public class ValueMapper {
+
+    @Autowired
+    private ModelMapper modelMapper;
+
+    public OwnerDto ownerModelToDto(Owner owner){
+        OwnerDto ownerDto = new OwnerDto();
+        ownerDto.setId(owner.getId());
+        ownerDto.setOwnerName(owner.getOwnerName());
+        ownerDto.setEmail(owner.getEmail());
+        ownerDto.setPhoneNo(owner.getPhoneNo());
+        if(owner.getSites()!=null){
+            List<UUID> sitesIds=new ArrayList<>();
+            //owner jode site ni list hase toh ek ek laisu and ownerDto ma set karine return karavsu
+            owner.getSites().forEach(ownerSite->{
+                sitesIds.add(ownerSite.getId());
+            });
+           ownerDto.setSitesIds(sitesIds);
+        }
+        return ownerDto;
+    }
+    public Owner ownerDtoToModel(OwnerDto ownerDto, List<Site> site){
+        Owner owner = new Owner();
+        owner.setId(ownerDto.getId());
+        owner.setOwnerName(ownerDto.getOwnerName());
+        owner.setEmail(ownerDto.getEmail());
+        owner.setPhoneNo(ownerDto.getPhoneNo());
+        owner.setSites(site);
+        return owner;
+
+    }
+
+    public Address addressDtoToModel(AddressDto addressDto,Site site){
+        Address address = new Address();
+        address.setId(addressDto.getId());
+        address.setAddressLine1(addressDto.getAddressLine1());
+        address.setAddressLine2(addressDto.getAddressLine2());
+        address.setCity(addressDto.getCity());
+        address.setState(addressDto.getState());
+        address.setPostalCode(addressDto.getPostalCode());
+        address.setCounty(addressDto.getCounty());
+        address.setSite(site);
+        return address;
+    }
+    public BatteryDto batteryModelToDto(Battery battery){
+        BatteryDto batteryDto = new BatteryDto();
+        batteryDto.setId(battery.getId());
+        batteryDto.setQuantity(battery.getQuantity());
+        batteryDto.setCapacity(battery.getCapacity());
+        batteryDto.setMaxOutput(battery.getMaxOutput());
+        if(battery.getSite()!=null){
+            batteryDto.setSiteId(battery.getSite().getId());
+        }
+        return batteryDto;
+    }
+    public Battery batteryDtoToModel(BatteryDto batteryDto,Site site){
+        Battery battery = new Battery();
+        battery.setId(batteryDto.getId());
+        battery.setQuantity(batteryDto.getQuantity());
+        battery.setCapacity(batteryDto.getCapacity());
+        battery.setMaxOutput(batteryDto.getMaxOutput());
+        battery.setSite(site);
+        return battery;
+    }
+
+    public SolarDto solarModelToDto(Solar solar){
+        SolarDto solarDto = new SolarDto();
+        solarDto.setId(solar.getId());
+        solarDto.setTotalPanelCapacity(solar.getTotalPanelCapacity());
+        solarDto.setInverterMaxCapacity(solar.getInverterMaxCapacity());
+        solarDto.setOrientation(solar.getOrientation());
+        if(solar.getSite()!=null){
+            solarDto.setSiteId(solar.getSite().getId());
+        }
+        return solarDto;
+    }
+    public Solar solarDtoToModel(SolarDto solarDto,Site site){
+        Solar solar = new Solar();
+        solar.setId(solarDto.getId());
+        solar.setTotalPanelCapacity(solarDto.getTotalPanelCapacity());
+        solar.setInverterMaxCapacity(solarDto.getInverterMaxCapacity());
+        solar.setOrientation(solarDto.getOrientation());
+        solar.setSite(site);
+        return solar;
+    }
+
+
+
+
+
+}
