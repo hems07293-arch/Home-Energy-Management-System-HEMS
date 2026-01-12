@@ -6,10 +6,6 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
-//@Table(name = "users",
-//        uniqueConstraints = {
-//        @UniqueConstraint(columnNames = {"provider","providerUserId"})
-//        })
 @Table(name = "users")
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,15 +18,14 @@ public class User {
     private Long id;
     @Column(name = "user_id",nullable = false,updatable = false)
     private Long userId;
-    @Column(name = "provider")
-    private String provider;
-    @Column(name = "provider_user_id")
-    private String providerUserId;
-    @Column(name = "provider_sub")
-    private String providerSub;
+
+//    @Column(name = "provider_user_id")
+//    private String providerUserId;
+
     @Column(name = "email",nullable = false)
     private String email;
+
     @Column(name = "time",nullable = false,updatable = true)
-    private LocalDateTime time;
+    private LocalDateTime lastLogin;
 
 }

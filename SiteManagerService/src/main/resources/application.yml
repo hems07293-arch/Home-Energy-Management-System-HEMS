@@ -10,6 +10,30 @@ spring:
     show-sql: true
   main:
     allow-bean-definition-overriding: true
+  threads:
+    virtual:
+      enabled: true
+  application:
+    name: SiteManagerService
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-0x5bg1uy1egiz4y0.us.auth0.com/
+          scope:
+            - email
+
 
 server:
   port: 8081
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8091/eureka
+
+

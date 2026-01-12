@@ -1,15 +1,21 @@
 package com.project.hems.SiteManagerService.service;
 
 import com.project.hems.SiteManagerService.dto.SiteRequestDto;
+import com.project.hems.SiteManagerService.dto.SiteResponseDto;
 import com.project.hems.SiteManagerService.entity.*;
 import com.project.hems.SiteManagerService.exception.ResourceNotFoundException;
 import com.project.hems.SiteManagerService.repository.OwnerRepo;
 import com.project.hems.SiteManagerService.repository.SiteRepo;
 import com.project.hems.SiteManagerService.util.ValueMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
 @RequiredArgsConstructor
 @Service
@@ -19,11 +25,11 @@ public class SiteService {
     private final OwnerRepo ownerRepo;
     private final ValueMapper valueMapper;
 
-    public Site createSite(SiteRequestDto dto) {
+    public Site createSite(SiteRequestDto dto,String userSub) {
 
         //in dto apde id store kariee chiee owner entity ni so apde ema thi fetch karine obj banavsu
         Owner owner = ownerRepo.findById(dto.getOwnerId())
-                .orElseThrow(() -> new ResourceNotFoundException("Owner not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Owner not found first add Owner then add Site"));
 
         // Save owner first in new created site
         Owner savedOwner = ownerRepo.save(owner);
@@ -66,5 +72,38 @@ public class SiteService {
         return savedSite;
 
     }
+
+    @Async
+    public Site fetchSiteById(UUID siteId){
+        Site site=siteRepo.findById(siteId).orElseThrow(()-> new ResourceNotFoundException("site is not found with site id :- "+siteId));
+        System.out.println("running on thread :- "+ Thread.currentThread());
+        return site;
+    }
+//
+    public List<Site> fetchAllSite(){
+       List<Site> sites= siteRepo.findAll();
+        System.out.println("running on thread :- "+ Thread.currentThread());
+        CompletableFuture<Integer> firstTask = CompletableFuture.supplyAsync(() -> {
+            return 42;
+        });
+
+        CompletableFuture<String> secondTask = firstTask.thenApply(result -> {
+            return "Result based on Task 1: " + result;
+        });
+       return sites;
+    }
+
+//    @Async
+//    @Transactional(readOnly = true)
+//    public CompletableFuture<List<SiteResponseDto>> fetchAllSites() {
+//
+//        List<SiteResponseDto> dtoList = siteRepo.findAll()
+//                .stream()
+//                .map(valueMapper::siteModelToResponseDto)
+//                .toList();
+//
+//        return CompletableFuture.completedFuture(dtoList);
+//    }
+
 }
 

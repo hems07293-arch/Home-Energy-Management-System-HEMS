@@ -25,6 +25,7 @@ public class Owner {
 
     @NotEmpty(message = "email name cannot be empty")
     @Email(message = "email should be valid")
+    @Column(nullable = false)
     private String email;
 
     @Size(max=10,message = "minimum 10 digit must be needed")
@@ -34,5 +35,9 @@ public class Owner {
     @OneToMany(mappedBy = "owner",cascade = CascadeType.PERSIST)
     @JsonManagedReference
     private List<Site> sites;
+
+    @OneToMany(mappedBy = "owner",cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<OwnerIdentities> Owneridentities;
 
 }

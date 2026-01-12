@@ -97,6 +97,48 @@ public class ValueMapper {
         return solar;
     }
 
+    public SiteResponseDto siteModelToResponseDto(Site site) {
+        SiteResponseDto dto = new SiteResponseDto();
+
+        dto.setSiteId(site.getId());
+        dto.setActive(site.isActive());
+
+        if (site.getOwner() != null) {
+            dto.setOwner(site.getOwner());
+        }
+
+        if (site.getSolar() != null) {
+            List<SolarDto> solarDtos = site.getSolar()
+                    .stream()
+                    .map(this::solarModelToDto)
+                    .toList();
+            dto.setSolars(solarDtos);
+        }
+
+        if (site.getBattery() != null) {
+            dto.setBatteryInfo(batteryModelToDto(site.getBattery()));
+        }
+
+        if (site.getAddress() != null) {
+            Address address = site.getAddress();
+            AddressDto addressDto = new AddressDto();
+            addressDto.setId(address.getId());
+            addressDto.setAddressLine1(address.getAddressLine1());
+            addressDto.setAddressLine2(address.getAddressLine2());
+            addressDto.setCity(address.getCity());
+            addressDto.setState(address.getState());
+            addressDto.setPostalCode(address.getPostalCode());
+            addressDto.setCounty(address.getCounty());
+            addressDto.setSiteId(site.getId());
+            dto.setAddressInfo(addressDto);
+        }
+        dto.setProgramId(site.getEnrollProgramIds());
+
+        return dto;
+    }
+
+
+
 
 
 
