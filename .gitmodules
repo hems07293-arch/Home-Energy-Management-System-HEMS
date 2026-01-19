@@ -1,0 +1,3 @@
+[submodule "simulator-service-testing"]
+	path = simulator-service-testing
+	url = https://github.com/hems07293-arch/simulator-service-testing.git
