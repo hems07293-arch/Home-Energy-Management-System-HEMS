@@ -3,6 +3,7 @@
 application.yml
 application.properties
 .env
-
 .gradle/
 **/.gradle/
+build/
+out/
