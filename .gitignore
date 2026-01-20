@@ -4,5 +4,5 @@ application.yml
 application.properties
 .env
 
-
-
+.gradle/
+**/.gradle/
