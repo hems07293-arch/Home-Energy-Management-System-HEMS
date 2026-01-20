@@ -1,0 +1,34 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SimulatorServiceTestingApplication<simulator-service-testing>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.project.hems.simulator_service_testing.SimulatorServiceTestingApplication",
+            "projectName": "simulator-service-testing",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EnvoyManagerServiceApplication<envoy-manager-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.project.hems.envoy_manager_service.EnvoyManagerServiceApplication",
+            "projectName": "envoy-manager-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SiteManagerServiceApplication<SiteManagerService>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.project.hems.SiteManagerService.SiteManagerServiceApplication",
+            "projectName": "SiteManagerService",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
