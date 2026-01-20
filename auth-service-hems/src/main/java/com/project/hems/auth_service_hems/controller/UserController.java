@@ -10,6 +10,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.client.OAuth2AuthorizedClientService;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,9 @@ import java.util.Optional;
 import java.util.Random;
 
 @RequiredArgsConstructor
-@Controller
+@RestController
+@RequestMapping("/auth")
+//@Controller("/auth")
 public class UserController {
     private final UserService userService;
     private final OAuth2AuthorizedClientService clientService;
@@ -31,41 +34,76 @@ public class UserController {
 //        return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user, user.getEmail()));
 //    }
 
-    @GetMapping("/")
-    public String createUser(Model model, @AuthenticationPrincipal OidcUser oidcUser){
+//    @GetMapping("/create-user")
+//    public String createUser(Model model, @AuthenticationPrincipal OidcUser oidcUser){
+//
+//        if(oidcUser==null){
+//            return "index";
+//        }
+//
+//        // Load OAuth2 client
+//        OAuth2AuthorizedClient client =
+//                clientService.loadAuthorizedClient(
+//                        "auth0",
+//                        oidcUser.getName()
+//                );
+//
+//        if (client != null) {
+//            System.out.println("ACCESS TOKEN = " +
+//                    client.getAccessToken().getTokenValue());
+//
+//            if (client.getRefreshToken() != null) {
+//                System.out.println("REFRESH TOKEN = " +
+//                        client.getRefreshToken().getTokenValue());
+//            }
+//
+//            System.out.println("Current time = " + LocalDateTime.now());
+//        }
+//
+//
+//        String email=oidcUser.getEmail();
+//        String subject=oidcUser.getSubject();
+//
+//        User user=userService.loginOrRegister(email,subject);
+//
+//        model.addAttribute("user",user);
+//        model.addAttribute("profile", oidcUser.getClaims());
+//
+//        return "index";
+//    }
 
-        if(oidcUser==null){
-            return "index";
-        }
-
-        // Load OAuth2 client
-        OAuth2AuthorizedClient client =
-                clientService.loadAuthorizedClient(
-                        "auth0",
-                        oidcUser.getName()
-                );
-
-        if (client != null) {
-            System.out.println("ACCESS TOKEN = " +
-                    client.getAccessToken().getTokenValue());
-
-            if (client.getRefreshToken() != null) {
-                System.out.println("REFRESH TOKEN = " +
-                        client.getRefreshToken().getTokenValue());
-            }
-
-            System.out.println("Current time = " + LocalDateTime.now());
-        }
 
 
-        String email=oidcUser.getEmail();
-        String subject=oidcUser.getSubject();
+    @GetMapping("/create-user")
+    public String createUser( @AuthenticationPrincipal Jwt jwt){
+
+        System.out.println("enter in create-user api");
+        System.out.println("jwt:- "+jwt);
+        String email = jwt.getClaimAsString("http://hems.com/email");
+        System.out.println("email"+email);
+
+        String subject=jwt.getSubject();
+        System.out.println("subject"+subject);
 
         User user=userService.loginOrRegister(email,subject);
 
-        model.addAttribute("user",user);
-        model.addAttribute("profile", oidcUser.getClaims());
-
-        return "index";
+        if(user.getId()!=null){
+            return "success created user :- "+user.getEmail();
+        }else {
+            return "user is not created";
+        }
     }
+
+    @GetMapping("/checking")
+    public String check(){
+        return "Working";
+    }
+
+
+    //here we add one controller to check token is valid or not ..
+
+
+    //then ek filter mukvu padse request ni pehla gateway per ave eni pehla ke Bearer thi start thayyy che ke nai em tem..
+
+
 }

@@ -56,6 +56,7 @@ public class SiteController {
         @GetMapping("/fetch-all-site")
         public ResponseEntity<List<Site>> getAllSites(){
             List<Site> sites=siteService.fetchAllSite();
+            log.info("/fetch-all-site api call");
             return new ResponseEntity<>(sites,HttpStatus.OK);
         }
 

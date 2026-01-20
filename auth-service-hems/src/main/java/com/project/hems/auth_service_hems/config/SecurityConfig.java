@@ -13,26 +13,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
 
-//    @Bean
-//    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//
-//        http
-//                .authorizeHttpRequests(auth -> auth
-//                        .requestMatchers("/", "/error").permitAll()
-//                        .requestMatchers("/checkeddata").authenticated()
-//                        .anyRequest().permitAll()
-//                )
-//                .oauth2Login(Customizer.withDefaults())
-//
-//                .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
-//
-//                .logout(logout -> logout
-//                        .logoutSuccessUrl("/")
-//                );
-//
-//        return http.build();
-//    }
-
     @Autowired
     private ClientRegistrationRepository clientRegistrationRepository;
     @Bean
@@ -44,13 +24,13 @@ public class SecurityConfig {
                         .requestMatchers("/checkeddata").authenticated()
                         .anyRequest().permitAll()
                 )
-                .oauth2Login(oauth2 -> oauth2
-                        .authorizationEndpoint(auth -> auth
-                                .authorizationRequestResolver(
-                                        authorizationRequestResolver(clientRegistrationRepository)
-                                )
-                        )
-                )
+//                .oauth2Login(oauth2 -> oauth2
+//                        .authorizationEndpoint(auth -> auth
+//                                .authorizationRequestResolver(
+//                                        authorizationRequestResolver(clientRegistrationRepository)
+//                                )
+//                        )
+//                )
 
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
                 .logout(logout -> logout.logoutSuccessUrl("/"));
@@ -58,21 +38,21 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    OAuth2AuthorizationRequestResolver authorizationRequestResolver(ClientRegistrationRepository clientRegistrationRepository) {
-        DefaultOAuth2AuthorizationRequestResolver resolver =
-                new DefaultOAuth2AuthorizationRequestResolver(
-                        clientRegistrationRepository,
-                        "/oauth2/authorization"
-                );
-
-        resolver.setAuthorizationRequestCustomizer(customizer ->
-                customizer.additionalParameters(params ->
-                        params.put("audience", "https://api.mfa01.com")
-                )
-        );
-
-        return resolver;
-    }
+//    @Bean
+//    OAuth2AuthorizationRequestResolver authorizationRequestResolver(ClientRegistrationRepository clientRegistrationRepository) {
+//        DefaultOAuth2AuthorizationRequestResolver resolver =
+//                new DefaultOAuth2AuthorizationRequestResolver(
+//                        clientRegistrationRepository,
+//                        "/oauth2/authorization"
+//                );
+//
+//        resolver.setAuthorizationRequestCustomizer(customizer ->
+//                customizer.additionalParameters(params ->
+//                        params.put("audience", "https://api.mfa01.com")
+//                )
+//        );
+//
+//        return resolver;
+//    }
 
 }

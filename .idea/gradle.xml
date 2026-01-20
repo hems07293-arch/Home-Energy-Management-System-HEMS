@@ -5,6 +5,7 @@
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/ServiceRegistry-HEMS" />
+        <option name="gradleJvm" value="ms-17" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/ServiceRegistry-HEMS" />
@@ -17,6 +18,15 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$/SiteManagerService" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/api-gateway-hems" />
+        <option name="gradleJvm" value="ms-21 (2)" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/api-gateway-hems" />
           </set>
         </option>
       </GradleProjectSettings>

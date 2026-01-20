@@ -56,4 +56,5 @@ eureka:
     service-url:
       defaultZone: http://localhost:8091/eureka
 
-
+server:
+  port: 8082

@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,7 @@ public class OwnerController {
 
     @PostMapping("/create-owner")
     //@ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasAuthority('SCOPE_site:write')")
     public ResponseEntity<OwnerDto> createOwner(
             @RequestBody Owner owner,
             @AuthenticationPrincipal Jwt jwt
@@ -48,6 +50,7 @@ public class OwnerController {
     }
 
     @GetMapping("/fetch-all-owner")
+    @PreAuthorize("hasAuthority('SCOPE_site:read')")
     public ResponseEntity<List<OwnerDto>> getAllOwner(){
         List<OwnerDto> allOwner=ownerService.getAllOwnerDetail();
         return new ResponseEntity<>(allOwner,HttpStatus.OK);

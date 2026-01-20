@@ -14,7 +14,7 @@ spring:
     virtual:
       enabled: true
   application:
-    name: SiteManagerService
+    name: SITE-SERVICE-HEMS
   security:
     oauth2:
       resourceserver:
