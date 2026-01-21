@@ -15,7 +15,8 @@
             "mainClass": "com.project.hems.simulator_service_testing.SimulatorServiceTestingApplication",
             "projectName": "simulator-service-testing",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=42627 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=simulator-service-testing"
         },
         {
             "type": "java",
@@ -25,7 +26,8 @@
             "mainClass": "com.project.hems.envoy_manager_service.EnvoyManagerServiceApplication",
             "projectName": "envoy-manager-service",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=45397 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=envoy-manager-service"
         },
         {
             "type": "java",
@@ -34,6 +36,16 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "com.project.hems.SiteManagerService.SiteManagerServiceApplication",
             "projectName": "SiteManagerService",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServiceRegistryHemsApplication<ServiceRegistry-HEMS>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.project.hems.ServiceRegistry_HEMS.ServiceRegistryHemsApplication",
+            "projectName": "ServiceRegistry-HEMS",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
