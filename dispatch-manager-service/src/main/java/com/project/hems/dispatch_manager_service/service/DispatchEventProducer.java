@@ -1,0 +1,44 @@
+package com.project.hems.dispatch_manager_service.service;
+
+import java.util.Set;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.stereotype.Service;
+
+import com.project.hems.dispatch_manager_service.model.DispatchEvent;
+import com.project.hems.dispatch_manager_service.model.DispatchEventType;
+import com.project.hems.dispatch_manager_service.model.EnergyPriority;
+
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+@RequiredArgsConstructor
+@Setter
+@ConfigurationProperties(prefix = "property.config.kafka")
+public class DispatchEventProducer {
+
+    private String dispatchEnergyTopic;
+
+    private final KafkaTemplate<String, Object> kafkaTemplate;
+
+    public void sendDispatchCommands() {
+        log.info("sendDispatchCommands: sending dummy dispatch command to envoy");
+        DispatchEvent cmd = DispatchEvent.builder()
+                .dispatchId(1l)
+                .siteId(101l)
+                .eventType(DispatchEventType.EXPORT_POWER)
+                .powerReqW(5000l)
+                .durationSec(900l)
+                .energyPriority(Set.of(EnergyPriority.BATTERY, EnergyPriority.SOLAR))
+                .reason("NIGHT_SAVER")
+                .build();
+        log.debug("sendDispatchCommands: command value = " + cmd);
+
+        kafkaTemplate.send(dispatchEnergyTopic, cmd);
+        log.debug("sendDispatchCommands: sent command successfully over kafka topic = " + dispatchEnergyTopic);
+    }
+}

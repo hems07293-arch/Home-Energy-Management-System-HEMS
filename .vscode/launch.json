@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DispatchManagerServiceApplication",
+            "request": "launch",
+            "mainClass": "com.project.hems.dispatch_manager_service.DispatchManagerServiceApplication",
+            "projectName": "dispatch-manager-service"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-SimulatorServiceTestingApplication<simulator-service-testing>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

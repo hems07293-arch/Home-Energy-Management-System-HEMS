@@ -1,0 +1,28 @@
+package com.project.hems.dispatch_manager_service.web.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.project.hems.dispatch_manager_service.service.DispatchEventProducer;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Slf4j
+@RestController
+@RequestMapping("/api/v1/dispatch")
+@RequiredArgsConstructor
+public class DispatchController {
+
+    private final DispatchEventProducer dispatchEventProducer;
+
+    @PostMapping("/send-dispatch-command")
+    public void sendDispatchCommand() {
+
+        log.info("sendDispatchCommand: sending post request to send the dispatch command");
+        dispatchEventProducer.sendDispatchCommands();
+    }
+
+}
