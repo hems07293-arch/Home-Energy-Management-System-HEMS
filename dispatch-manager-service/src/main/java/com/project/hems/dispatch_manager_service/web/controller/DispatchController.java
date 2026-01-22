@@ -25,7 +25,7 @@ public class DispatchController {
     public void sendDispatchCommand(@RequestBody @Valid DispatchEvent dispatchEvent) {
 
         log.info("sendDispatchCommand: sending post request to send the dispatch command");
-        dispatchEventProducer.sendDispatchCommands();
+        dispatchEventProducer.sendDispatchCommands(dispatchEvent);
     }
 
 }
