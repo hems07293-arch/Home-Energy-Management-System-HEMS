@@ -22,15 +22,6 @@ public class DispatchEventProducer {
 
     public void sendDispatchCommands(DispatchEvent dispatchEvent) {
         log.info("sendDispatchCommands: sending dummy dispatch command to envoy");
-        // DispatchEvent cmd = DispatchEvent.builder()
-        // .dispatchId(1l)
-        // .siteId(101l)
-        // .eventType(DispatchEventType.EXPORT_POWER)
-        // .powerReqW(5000l)
-        // .durationSec(900l)
-        // .energyPriority(Set.of(EnergyPriority.BATTERY, EnergyPriority.SOLAR))
-        // .reason("NIGHT_SAVER")
-        // .build();
         log.debug("sendDispatchCommands: command value = " + dispatchEvent);
 
         kafkaTemplate.send(dispatchEnergyTopic, dispatchEvent);
