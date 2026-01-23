@@ -2,11 +2,9 @@ package com.project.hems.simulator_service.web.controller;
 
 import com.project.hems.simulator_service.config.ActiveControlStore;
 import com.project.hems.simulator_service.model.ActiveControlState;
-import com.project.hems.simulator_service.model.BatteryMode;
 import com.project.hems.simulator_service.model.MeterSnapshot;
 import com.project.hems.simulator_service.model.envoy.DispatchCommand;
 import com.project.hems.simulator_service.service.MeterManagementService;
-import com.project.hems.simulator_service.service.MeterPowerFlowService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +16,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,7 +27,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class MeterController {
 
     private final MeterManagementService meterManagementService;
-    private final MeterPowerFlowService meterPowerFlowService;
     private final Map<String, MeterSnapshot> meterReadings;
     private final ActiveControlStore activeControlStore;
 
@@ -51,25 +47,6 @@ public class MeterController {
             @RequestBody Double batteryCapacity) {
         log.info("activate meter: {}", siteId, batteryCapacity);
         meterManagementService.activateMeter(siteId, batteryCapacity);
-    }
-
-    @PutMapping("/start-dispatching/{siteId}")
-    public void startDispatchingEnergy(@PathVariable(name = "siteId", required = true) Long siteId) {
-        log.info("dispatching power from meter: {}", siteId);
-        meterPowerFlowService.startDispatchingPower(siteId);
-    }
-
-    @PutMapping("/stop-dispatching/{siteId}")
-    public void stopDispatchingEnergy(@PathVariable(name = "siteId", required = true) Long siteId) {
-        log.info("stop dispatching power from meter: {}", siteId);
-        meterPowerFlowService.stopDispatchingPower(siteId);
-    }
-
-    @PutMapping("/change-battery-mode/{siteId}")
-    public void changeBatteryMode(@PathVariable(name = "siteId", required = true) Long siteId,
-            @RequestBody BatteryMode batteryMode) {
-        log.info("changing battery mode to " + batteryMode);
-        meterPowerFlowService.changeBatteryMode(siteId, batteryMode);
     }
 
     @PostMapping("/dispatch")
