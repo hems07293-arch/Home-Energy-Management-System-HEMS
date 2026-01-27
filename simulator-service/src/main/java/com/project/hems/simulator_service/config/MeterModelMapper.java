@@ -1,6 +1,7 @@
 package com.project.hems.simulator_service.config;
 
 import java.sql.Timestamp;
+import java.util.UUID;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
@@ -28,7 +29,8 @@ public class MeterModelMapper {
 
                     return MeterSnapshot.builder()
                             .meterId(source.getId())
-                            .siteId(source.getSiteId())
+                            .siteId(UUID.fromString(source
+                                    .getSiteId()))
                             // Map cumulative energy values for "Self-Healing" logic
                             .totalGridImportKwh(source.getTotalGridImportKwh())
                             .totalGridExportKwh(source.getTotalGridExportKwh())
@@ -55,7 +57,7 @@ public class MeterModelMapper {
 
                     MeterEntity entity = new MeterEntity();
                     entity.setId(source.getMeterId());
-                    entity.setSiteId(source.getSiteId());
+                    entity.setSiteId(source.getSiteId().toString());
                     entity.setLastUpdatedAt(Timestamp.valueOf(source.getTimestamp()));
 
                     // Persistence of accumulators (Critical for Billing Microservice)

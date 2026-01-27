@@ -1,6 +1,8 @@
 package com.project.hems.dispatch_manager_service.model;
 
 import java.util.List;
+import java.util.UUID;
+
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -19,10 +21,10 @@ import lombok.ToString;
 public class DispatchEvent {
 
     @NotNull(message = "dispatchId cannot be null")
-    private Long dispatchId;
+    private UUID dispatchId;
 
     @NotNull(message = "siteId cannot be null")
-    private Long siteId;
+    private UUID siteId;
 
     @NotNull(message = "eventType cannot be null")
     private DispatchEventType eventType;

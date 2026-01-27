@@ -2,6 +2,7 @@ package com.project.hems.simulator_service.model.envoy;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.UUID;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -19,10 +20,10 @@ import lombok.ToString;
 public class DispatchCommand {
 
     @NotNull
-    private String dispatchId;
+    private UUID dispatchId;
 
     @NotNull
-    private Long siteId;
+    private UUID siteId;
 
     @NotNull
     private Long meterId;

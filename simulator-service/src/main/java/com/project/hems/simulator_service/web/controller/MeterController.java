@@ -6,12 +6,12 @@ import com.project.hems.simulator_service.model.MeterSnapshot;
 import com.project.hems.simulator_service.model.envoy.DispatchCommand;
 import com.project.hems.simulator_service.service.MeterManagementService;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
 import java.util.UUID;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,6 +37,12 @@ public class MeterController {
         return new ResponseEntity<>(meterManagementService.getMeterData(siteId), HttpStatus.OK);
     }
 
+    @GetMapping("/get-meter-id/{siteId}")
+    public Long findMeterIdBySiteId(@PathVariable(name = "siteId", required = true) UUID siteId) {
+        log.info("getMeterId: GET request to fetch meter id from siteId " + siteId);
+        return meterManagementService.getMeterData(siteId).getMeterId();
+    }
+
     @GetMapping("/get-all-meter-data")
     public Map<String, MeterSnapshot> getAllMeterData() {
         log.info("get meter data");
@@ -51,7 +57,7 @@ public class MeterController {
     }
 
     @PostMapping("/dispatch")
-    public ResponseEntity<Void> applyDispatch(@RequestBody DispatchCommand command) {
+    public ResponseEntity<Void> applyDispatch(@RequestBody @Valid DispatchCommand command) {
         log.info("applyDispatch: applying dispatch command received from envoy " + command);
         ActiveControlState control = new ActiveControlState(
                 command.getBatteryControl(),
@@ -59,7 +65,7 @@ public class MeterController {
                 command.getEnergyPriority(),
                 command.getValidUntil());
 
-        activeControlStore.applyDispatch(command.getSiteId().toString(), control);
+        activeControlStore.applyDispatch(command.getSiteId(), control);
 
         return ResponseEntity.accepted().build();
     }

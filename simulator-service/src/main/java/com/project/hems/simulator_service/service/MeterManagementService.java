@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @Setter
 @Service
 public class MeterManagementService {
-    private final Map<String, MeterSnapshot> meterReadings;
+    private final Map<UUID, MeterSnapshot> meterReadings;
     private final MeterRepository meterRepository;
     private final ModelMapper mapper;
 
@@ -75,7 +75,7 @@ public class MeterManagementService {
         log.debug("activateMeter: meter persisted to DB with meterId={}", saveNewEntityToDb.getId());
 
         // Cache the snapshot in bean map for fast access
-        meterReadings.put(siteId.toString(), snapshot);
+        meterReadings.put(siteId, snapshot);
 
         log.info("activateMeter: meter snapshot cached in Bean Map for siteId={} with TTL=10s", siteId);
     }
@@ -98,7 +98,7 @@ public class MeterManagementService {
 
         log.debug("getMeterData: fetching meter snapshot from Bean Map for siteId={}", siteId);
 
-        MeterSnapshot snapshot = meterReadings.get(siteId.toString());
+        MeterSnapshot snapshot = meterReadings.get(siteId);
 
         if (snapshot == null) {
             log.warn("getMeterData: no meter snapshot found in Bean Map for siteId={}", siteId);
@@ -136,7 +136,7 @@ public class MeterManagementService {
             // Convert DB entity → snapshot before caching
             MeterSnapshot snapshot = mapper.map(meterEntity, MeterSnapshot.class);
 
-            meterReadings.put(meterEntity.getSiteId().toString(), snapshot);
+            meterReadings.put(UUID.fromString(meterEntity.getSiteId()), snapshot);
 
             log.trace("getValuesFromDB: cached meter snapshot for siteId={} with TTL=10s",
                     meterEntity.getSiteId());

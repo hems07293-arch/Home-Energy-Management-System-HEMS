@@ -41,7 +41,7 @@ public class SimulationShutdownListener {
 
         for (MeterSnapshot snapshot : allSnapshots) {
             try {
-                meterRepository.findBySiteId(snapshot.getSiteId())
+                meterRepository.findBySiteId(snapshot.getSiteId().toString())
                         .ifPresentOrElse(entity -> {
                             // Update existing record using the new mapping logic
                             updateEntityFromSnapshot(entity, snapshot);
