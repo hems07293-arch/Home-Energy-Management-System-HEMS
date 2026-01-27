@@ -10,7 +10,6 @@ public class SolarDto {
     private double totalPanelCapacity;
     private double inverterMaxCapacity;
     private String orientation;
-    //change karelu che UUID -> Long
-    private Long siteId;
+    private UUID siteId;
 }
 

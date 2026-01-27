@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Component
 public class ValueMapper {
@@ -23,7 +24,7 @@ public class ValueMapper {
         ownerDto.setPhoneNo(owner.getPhoneNo());
         if(owner.getSites()!=null){
             //change karvu Long -> UUID
-            List<Long> sitesIds=new ArrayList<>();
+            List<UUID> sitesIds=new ArrayList<>();
             //owner jode site ni list hase toh ek ek laisu and ownerDto ma set karine return karavsu
             owner.getSites().forEach(ownerSite->{
                 sitesIds.add(ownerSite.getId());

@@ -1,8 +1,13 @@
 spring:
   datasource:
-    url: jdbc:mysql://hems-auth.czkgccwqed1c.ap-south-1.rds.amazonaws.com:3306/site_service?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    username: hems
-    password: Hems#Einfochips
+#    url: jdbc:mysql://hems-auth.czkgccwqed1c.ap-south-1.rds.amazonaws.com:3306/site_service?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+#    username: hems
+#    password: Hems#Einfochips
+    url: jdbc:mysql://localhost:3306/site_service
+    username: root
+    password: Jills@2022
+
+
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 
@@ -30,7 +35,7 @@ spring:
       bootstrap-servers:
         - localhost:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.LongSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
 
 
 
