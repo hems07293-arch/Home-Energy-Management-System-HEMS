@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="867f6b59-a873-4941-95b1-d31ab905f1e6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/auth-service-hems/src/main/java/com/project/hems/auth_service_hems/AuthServiceHemsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/auth-service-hems/src/main/java/com/project/hems/auth_service_hems/AuthServiceHemsApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/envoy-manager-service" beforeDir="false" afterPath="$PROJECT_DIR$/envoy-manager-service" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/envoy-manager-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/envoy-manager-service/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/envoy-manager-service/src/main/java/com/project/hems/envoy_manager_service/service/CommandTranslatorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/envoy-manager-service/src/main/java/com/project/hems/envoy_manager_service/service/CommandTranslatorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulator-service-testing" beforeDir="false" afterPath="$PROJECT_DIR$/simulator-service-testing" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulator-service-testing/.gradle/8.14.3/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/simulator-service-testing/.gradle/8.14.3/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulator-service-testing/.gradle/8.14.3/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/simulator-service-testing/.gradle/8.14.3/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulator-service-testing/.gradle/8.14.3/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/simulator-service-testing/.gradle/8.14.3/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulator-service-testing/.gradle/8.14.3/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/simulator-service-testing/.gradle/8.14.3/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulator-service-testing/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/simulator-service-testing/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simulator-service-testing/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/simulator-service-testing/.gradle/file-system.probe" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/ServiceRegistry-HEMS">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/SiteManagerService">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/Virtual-Power-Plant">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/api-gateway-hems">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/auth-service-hems">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/dispatch-manager-service">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/envoy-manager-service">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/simulator-j">
+      <ProjectState />
+    </projectState>
+    <projectState path="$PROJECT_DIR$/simulator-service-testing">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/simulator-service-testing">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/envoy-manager-service">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/envoy-manager-service" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="38pJsp68iQAZvU16ElyT5gH6JYh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.EnvoyManagerServiceApplication.executor": "Run",
+    "Application.envoy manager.executor": "Run",
+    "Gradle.ServiceRegistry-HEMS [:com.project.hems.ServiceRegistry_HEMS.ServiceRegistryHemsApplication.main()].executor": "Run",
+    "Gradle.SiteManagerService [:com.project.hems.SiteManagerService.SiteManagerServiceApplication.main()].executor": "Run",
+    "Gradle.api-gateway-hems [:com.project.hems.api_gateway_hems.ApiGatewayHemsApplication.main()].executor": "Run",
+    "Gradle.auth-service-hems [:com.project.hems.auth_service_hems.AuthServiceHemsApplication.main()].executor": "Run",
+    "Gradle.envoy-manager-service [:com.project.hems.envoy_manager_service.EnvoyManagerServiceApplication.main()].executor": "Run",
+    "Gradle.envoy-manager-service [build].executor": "Run",
+    "Gradle.simulator-service-testing [:com.project.hems.simulator_service_testing.SimulatorServiceTestingApplication.main()].executor": "Run",
+    "Gradle.simulator-service-testing [build].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "55ebc4a2",
+    "last_opened_file_path": "/Users/jillspatel/Desktop/IntelliJ/HEMS",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.28426862",
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Virtual-Power-Plant/src/main/resources" />
+    </key>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="867f6b59-a873-4941-95b1-d31ab905f1e6" name="Changes" comment="" />
+      <created>1769490787909</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1769490787909</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

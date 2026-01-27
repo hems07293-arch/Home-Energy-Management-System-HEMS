@@ -28,7 +28,7 @@ public class SiteService {
     private final SiteRepo siteRepo;
     private final OwnerRepo ownerRepo;
     private final ValueMapper valueMapper;
-    private final KafkaTemplate<String,Long> kafkaTemplate;
+    private final KafkaTemplate<String,UUID> kafkaTemplate;
     @Value("${property.config.kafka.site-creation-topic}")
     public String siteCreationTopic;
 
@@ -77,7 +77,7 @@ public class SiteService {
 
         //todo:-
         //site ni pan dto banavine work karvu siteResponseDto che toh e pass karvo
-        Long id=savedSite.getId();
+        UUID id=savedSite.getId();
         kafkaTemplate.send(siteCreationTopic,id);
         log.info("kafka event send to site creation topic body is "+id);
         return savedSite;

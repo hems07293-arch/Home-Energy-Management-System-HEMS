@@ -11,8 +11,7 @@ import java.util.UUID;
 
 @Data
 public class SiteResponseDto {
-    //change karelu ch he UUID -> Long
-    private Long siteId;
+    private UUID siteId;
     private Owner owner;
     private boolean isActive;
     private List<SolarDto> solars;
