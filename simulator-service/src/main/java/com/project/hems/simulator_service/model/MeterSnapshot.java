@@ -3,6 +3,7 @@ package com.project.hems.simulator_service.model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.project.hems.simulator_service.model.envoy.EnergyPriority;
@@ -30,7 +31,7 @@ public class MeterSnapshot implements Serializable {
     private Long meterId;
 
     @NotNull(message = "siteId cannot be null")
-    private Long siteId;
+    private UUID siteId;
 
     @NotNull(message = "timestamp cannot be null")
     private LocalDateTime timestamp;

@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.Map;
+import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +32,7 @@ public class MeterController {
     private final ActiveControlStore activeControlStore;
 
     @GetMapping("/get-meter-data/{siteId}")
-    public ResponseEntity<MeterSnapshot> getMeterData(@PathVariable(name = "siteId", required = true) Long siteId) {
+    public ResponseEntity<MeterSnapshot> getMeterData(@PathVariable(name = "siteId", required = true) UUID siteId) {
         log.info("get meter data for siteId: {}", siteId);
         return new ResponseEntity<>(meterManagementService.getMeterData(siteId), HttpStatus.OK);
     }
@@ -43,7 +44,7 @@ public class MeterController {
     }
 
     @PostMapping("/activate-meter/{siteId}")
-    public void activateMeterData(@PathVariable(name = "siteId", required = true) Long siteId,
+    public void activateMeterData(@PathVariable(name = "siteId", required = true) UUID siteId,
             @RequestBody Double batteryCapacity) {
         log.info("activate meter: {}", siteId, batteryCapacity);
         meterManagementService.activateMeter(siteId, batteryCapacity);

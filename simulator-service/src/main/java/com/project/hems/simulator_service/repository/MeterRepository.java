@@ -4,7 +4,8 @@ import com.project.hems.simulator_service.domain.MeterEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 public interface MeterRepository extends JpaRepository<MeterEntity, Long> {
-    Optional<MeterEntity> findBySiteId(Long siteId);
+    Optional<MeterEntity> findBySiteId(UUID siteId);
 }

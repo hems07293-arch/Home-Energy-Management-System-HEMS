@@ -1,5 +1,6 @@
 package com.project.hems.simulator_service.service;
 
+import com.project.hems.simulator_service.config.ActiveControlStore;
 import com.project.hems.simulator_service.domain.MeterEntity;
 import com.project.hems.simulator_service.model.BatteryMode;
 import com.project.hems.simulator_service.model.ChargingStatus;
@@ -28,7 +29,7 @@ public class MeterManagementService {
 
     // 1. Create / Activate a meter (Persist to DB + Cache to Bean Map)
     @Transactional
-    public void activateMeter(Long siteId, Double batteryCapacity) {
+    public void activateMeter(UUID siteId, Double batteryCapacity) {
 
         // Entry log — helps trace meter lifecycle events
         log.info("activateMeter: activating meter for siteId={}", siteId);
@@ -42,6 +43,7 @@ public class MeterManagementService {
                 .batteryRemainingWh(5000.0) // Start half-full
 
                 // Initial Logic States
+                .energyPriorities(ActiveControlStore.energyPriorities)
                 .batterySoc(50)
                 .batteryMode(BatteryMode.AUTO)
                 .chargingStatus(ChargingStatus.IDLE)
@@ -92,7 +94,7 @@ public class MeterManagementService {
     }
 
     // 3. Get Data (Read from map by siteId)
-    public MeterSnapshot getMeterData(Long siteId) {
+    public MeterSnapshot getMeterData(UUID siteId) {
 
         log.debug("getMeterData: fetching meter snapshot from Bean Map for siteId={}", siteId);
 

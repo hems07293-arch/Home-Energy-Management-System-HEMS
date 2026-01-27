@@ -3,6 +3,7 @@ package com.project.hems.simulator_service.domain;
 import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.List;
+import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.JdbcTypeCode;
@@ -49,7 +50,7 @@ public class MeterEntity {
 
     @Column(nullable = false, unique = true)
     @NotNull(message = "siteId cannot be null")
-    private Long siteId;
+    private UUID siteId;
 
     // --- Cumulative Energy Accumulators (kWh) ---
     // Using precision (15,4) to prevent rounding errors in energy accounting
