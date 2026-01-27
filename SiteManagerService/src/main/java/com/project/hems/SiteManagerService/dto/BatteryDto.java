@@ -9,5 +9,6 @@ public class BatteryDto {
     private int quantity;
     private double capacity;
     private double maxOutput;
-    private UUID siteId;
+    //change karelu che UUID -> Long
+    private Long siteId;
 }

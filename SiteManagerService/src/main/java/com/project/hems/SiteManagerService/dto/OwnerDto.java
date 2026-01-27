@@ -1,6 +1,5 @@
 package com.project.hems.SiteManagerService.dto;
 
-import com.project.hems.SiteManagerService.entity.Site;
 import lombok.Data;
 
 import java.util.List;
@@ -12,6 +11,7 @@ public class OwnerDto {
     private String ownerName;
     private String email;
     private String phoneNo;
-    private List<UUID> sitesIds;
+    //change karelu che UUID -> Long
+    private List<Long> sitesIds;
 
 }

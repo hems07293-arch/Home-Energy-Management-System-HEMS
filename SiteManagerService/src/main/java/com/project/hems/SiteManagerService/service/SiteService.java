@@ -8,7 +8,10 @@ import com.project.hems.SiteManagerService.repository.OwnerRepo;
 import com.project.hems.SiteManagerService.repository.SiteRepo;
 import com.project.hems.SiteManagerService.util.ValueMapper;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +20,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class SiteService {
@@ -24,6 +28,10 @@ public class SiteService {
     private final SiteRepo siteRepo;
     private final OwnerRepo ownerRepo;
     private final ValueMapper valueMapper;
+    private final KafkaTemplate<String,Long> kafkaTemplate;
+    @Value("${property.config.kafka.site-creation-topic}")
+    public String siteCreationTopic;
+
 
     public Site createSite(SiteRequestDto dto,String userSub) {
 
@@ -69,7 +77,11 @@ public class SiteService {
 
         //todo:-
         //site ni pan dto banavine work karvu siteResponseDto che toh e pass karvo
+        Long id=savedSite.getId();
+        kafkaTemplate.send(siteCreationTopic,id);
+        log.info("kafka event send to site creation topic body is "+id);
         return savedSite;
+
 
     }
 
