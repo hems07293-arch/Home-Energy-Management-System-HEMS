@@ -30,7 +30,7 @@ public class OwnerController {
 
     @PostMapping("/create-owner")
     //@ResponseStatus(HttpStatus.CREATED)
-    @PreAuthorize("hasAuthority('SCOPE_site:write')")
+   // @PreAuthorize("hasAuthority('SCOPE_site:write')")
     public ResponseEntity<OwnerDto> createOwner(
             @RequestBody Owner owner,
             @AuthenticationPrincipal Jwt jwt
@@ -50,7 +50,7 @@ public class OwnerController {
     }
 
     @GetMapping("/fetch-all-owner")
-    @PreAuthorize("hasAuthority('SCOPE_site:read')")
+   // @PreAuthorize("hasAuthority('SCOPE_site:read')")
     public ResponseEntity<List<OwnerDto>> getAllOwner(){
         List<OwnerDto> allOwner=ownerService.getAllOwnerDetail();
         return new ResponseEntity<>(allOwner,HttpStatus.OK);

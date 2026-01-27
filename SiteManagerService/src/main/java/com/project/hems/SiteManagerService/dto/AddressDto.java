@@ -13,5 +13,6 @@ public class AddressDto {
     private String state;
     private String postalCode;
     private String county;
-    private UUID siteId;
+    //change karelu che UUID -> Long
+    private Long siteId;
 }
