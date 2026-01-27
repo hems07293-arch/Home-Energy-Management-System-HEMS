@@ -48,6 +48,16 @@
             "projectName": "ServiceRegistry-HEMS",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SimulatorServiceApplication<simulator-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.project.hems.simulator_service.SimulatorServiceApplication",
+            "projectName": "simulator-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
