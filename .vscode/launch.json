@@ -15,7 +15,8 @@
             "mainClass": "com.project.hems.simulator_service_testing.SimulatorServiceTestingApplication",
             "projectName": "simulator-service-testing",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=42627 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=simulator-service-testing"
         },
         {
             "type": "java",
@@ -25,7 +26,8 @@
             "mainClass": "com.project.hems.envoy_manager_service.EnvoyManagerServiceApplication",
             "projectName": "envoy-manager-service",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=45397 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=envoy-manager-service"
         },
         {
             "type": "java",
@@ -34,6 +36,61 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "com.project.hems.SiteManagerService.SiteManagerServiceApplication",
             "projectName": "SiteManagerService",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=52191 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=SiteManagerService"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServiceRegistryHemsApplication<ServiceRegistry-HEMS>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.project.hems.ServiceRegistry_HEMS.ServiceRegistryHemsApplication",
+            "projectName": "ServiceRegistry-HEMS",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=53197 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=ServiceRegistry-HEMS"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-SimulatorServiceApplication<simulator-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.project.hems.simulator_service.SimulatorServiceApplication",
+            "projectName": "simulator-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=52075 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=simulator-service"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ApiGatewayHemsApplication<api-gateway-hems>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.project.hems.api_gateway_hems.ApiGatewayHemsApplication",
+            "projectName": "api-gateway-hems",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=53863 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=api-gateway-hems"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-VirtualPowerPlantApplication<Virtual-Power-Plant>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.hems.project.Virtual_Power_Plant.VirtualPowerPlantApplication",
+            "projectName": "Virtual-Power-Plant",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=53229 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=Virtual-Power-Plant"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-AuthServiceHemsApplication<auth-service-hems>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.project.hems.auth_service_hems.AuthServiceHemsApplication",
+            "projectName": "auth-service-hems",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }

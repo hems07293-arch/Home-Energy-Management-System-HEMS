@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/HEMS.iml" filepath="$PROJECT_DIR$/.idea/HEMS.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SiteManagerService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/SiteManagerService.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Virtual-Power-Plant.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Virtual-Power-Plant.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/auth-service-hems.main.iml" filepath="$PROJECT_DIR$/.idea/modules/auth-service-hems.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.project.hems.simulator-j.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.project.hems.simulator-j.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.project.hems.simulator-j.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.project.hems.simulator-j.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/envoy-manager-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/envoy-manager-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Home-Energy-Management-System-HEMS.iml"
+        filepath="$PROJECT_DIR$/.idea/Home-Energy-Management-System-HEMS.iml" />
     </modules>
   </component>
 </project>

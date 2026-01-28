@@ -1,7 +1,12 @@
 package com.project.hems.dispatch_manager_service.model;
 
-import java.util.Set;
+import java.util.List;
+import java.util.UUID;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,11 +19,27 @@ import lombok.ToString;
 @Data
 @Builder
 public class DispatchEvent {
-    private Long dispatchId;
-    private Long siteId;
+
+    @NotNull(message = "dispatchId cannot be null")
+    private UUID dispatchId;
+
+    @NotNull(message = "siteId cannot be null")
+    private UUID siteId;
+
+    @NotNull(message = "eventType cannot be null")
     private DispatchEventType eventType;
+
+    @NotNull(message = "powerReqW cannot be null")
+    @Positive(message = "powerReqW must be greater than 0")
     private Long powerReqW;
+
+    @NotNull(message = "durationSec cannot be null")
+    @Positive(message = "durationSec must be greater than 0")
     private Long durationSec;
-    private Set<EnergyPriority> energyPriority;
+
+    @NotEmpty(message = "energyPriority cannot be empty")
+    private List<@NotNull EnergyPriority> energyPriority;
+
+    @Size(min = 1, max = 255, message = "reason must be at most 255 characters")
     private String reason;
 }
