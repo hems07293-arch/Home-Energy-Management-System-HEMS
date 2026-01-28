@@ -29,7 +29,7 @@ public class MeterModelMapper {
 
                     return MeterSnapshot.builder()
                             .meterId(source.getId())
-                            .siteId(UUID.fromString(source
+                            .siteId((source
                                     .getSiteId()))
                             // Map cumulative energy values for "Self-Healing" logic
                             .totalGridImportKwh(source.getTotalGridImportKwh())
@@ -57,7 +57,7 @@ public class MeterModelMapper {
 
                     MeterEntity entity = new MeterEntity();
                     entity.setId(source.getMeterId());
-                    entity.setSiteId(source.getSiteId().toString());
+                    entity.setSiteId(source.getSiteId());
                     entity.setLastUpdatedAt(Timestamp.valueOf(source.getTimestamp()));
 
                     // Persistence of accumulators (Critical for Billing Microservice)

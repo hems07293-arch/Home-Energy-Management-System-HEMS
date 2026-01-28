@@ -136,7 +136,7 @@ public class MeterManagementService {
             // Convert DB entity → snapshot before caching
             MeterSnapshot snapshot = mapper.map(meterEntity, MeterSnapshot.class);
 
-            meterReadings.put(UUID.fromString(meterEntity.getSiteId()), snapshot);
+            meterReadings.put(meterEntity.getSiteId(), snapshot);
 
             log.trace("getValuesFromDB: cached meter snapshot for siteId={} with TTL=10s",
                     meterEntity.getSiteId());

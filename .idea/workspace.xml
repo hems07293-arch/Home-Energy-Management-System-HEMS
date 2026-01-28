@@ -5,24 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="326b55e5-542f-4f9b-85ac-42589d3bdc25" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Home-Energy-Management-System-HEMS.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/SiteManagerService.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SiteManagerService/src/main/java/com/project/hems/SiteManagerService/dto/SiteCreationEvent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/envoy-manager-service/src/main/java/com/project/hems/envoy_manager_service/config/KafkaConsumerConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SiteManagerService/src/main/java/com/project/hems/SiteManagerService/dto/KafkaSiteProducerDto.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SiteManagerService/src/main/java/com/project/hems/SiteManagerService/service/SiteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SiteManagerService/src/main/java/com/project/hems/SiteManagerService/service/SiteService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/envoy-manager-service" beforeDir="false" afterPath="$PROJECT_DIR$/envoy-manager-service" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/envoy-manager-service/src/main/java/com/project/hems/envoy_manager_service/config/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/envoy-manager-service/src/main/java/com/project/hems/envoy_manager_service/config/KafkaConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/envoy-manager-service/src/main/java/com/project/hems/envoy_manager_service/service/KafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/envoy-manager-service/src/main/java/com/project/hems/envoy_manager_service/service/KafkaConsumerService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +57,7 @@
     </system>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/envoy-manager-service" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "customColor": "",
@@ -87,6 +71,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Gradle.ServiceRegistry-HEMS [:com.project.hems.ServiceRegistry_HEMS.ServiceRegistryHemsApplication.main()].executor": "Run",
+    "Gradle.simulator-service [:com.project.hems.simulator_service.SimulatorServiceApplication.main()].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
