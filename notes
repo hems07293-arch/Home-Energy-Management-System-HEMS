@@ -11,3 +11,237 @@ find . -name "*.iml" -delete
 
 
 This wipes the corrupted project model.
+
+
+
+-----------
+je service ma apde feingClient use kariee and eni under apde api na dto ne e badhu jotu hoy toh same copy paste
+karva ni jagyae we do like make 
+
+## Sharing API DTOs in Microservices with Feign Clients
+## and delete main class and test folder in contract module that is not needed 
+- Create a dedicated **contract module** to hold shared DTO classes.
+- Publish this contract module as a separate library.
+- In each microservice, add the contract module as a dependency.
+- Feign clients use DTOs from the contract module for request/response types.
+- Services map DTOs to their internal entity models and vice versa.
+- This avoids DTO code duplication and ensures consistent API contracts across services.
+- Use `implementation 'com.example:hems-api-contracts:version'` or `implementation project(':hems-api-contracts')` in Gradle.
+- Multi-module projects have a root `settings.gradle` including subprojects; single-module projects do not.
+
+
+
+🧩 1. What is a Multi-Module Project?
+✅ Simple meaning:
+
+A multi-module project =
+👉 one main (parent) project
+👉 with many small projects (modules / services) inside it
+
+Example:
+
+Home-Energy-Management-System-HEMS   (PARENT)
+ ├── SiteManagerService              (MODULE 1)
+ ├── auth-service-hems               (MODULE 2)
+ ├── ServiceRegistry-HEMS            (MODULE 3)
+ └── hems-api-contracts              (MODULE 4 - shared DTOs)
+
+
+So:
+
+📦 One parent
+📦 Many child projects
+🔗 All connected
+
+🧠 2. Why we make a Parent Gradle Project?
+We make a parent project to:
+
+✅ Build all services together
+✅ Share same Gradle version
+✅ Share same dependency versions
+✅ Run one command:
+
+gradle clean build
+
+
+and it builds ALL services
+
+Without parent:
+❌ you must build each service separately
+❌ dependency versions may mismatch
+❌ hard to manage
+
+So parent = manager / controller of all modules.
+
+⚙️ 3. What is settings.gradle?
+
+This is the MOST IMPORTANT file for multi-module.
+
+It tells Gradle:
+
+📢 “These folders are part of my project”
+
+Example:
+
+rootProject.name = "Home-Energy-Management-System-HEMS"
+
+include("SiteManagerService")
+include("auth-service-hems")
+include("ServiceRegistry-HEMS")
+include("hems-api-contracts")
+
+
+Meaning:
+👉 These are sub-projects (modules)
+👉 Gradle should build them together
+
+🧱 4. What is build.gradle in Parent?
+
+Parent build.gradle is for:
+
+✔ common configuration
+✔ common plugins
+✔ common Java version
+✔ common repositories
+
+Example use:
+
+subprojects {
+    apply plugin: "java"
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+
+So:
+📌 child projects automatically inherit this
+
+🔁 5. What is gradlew (Gradle Wrapper)?
+Meaning:
+
+gradlew = small script that runs Gradle
+
+Purpose:
+👉 Ensures everyone uses SAME Gradle version
+👉 Team members don’t need to install Gradle manually
+
+Files:
+
+gradlew
+gradlew.bat
+gradle/wrapper/gradle-wrapper.properties
+
+
+Inside gradle-wrapper.properties:
+
+distributionUrl=https://services.gradle.org/distributions/gradle-8.5-bin.zip
+
+
+So:
+
+gradlew downloads correct Gradle automatically
+
+🧩 6. What is hems-api-contracts module?
+
+That is a shared library module.
+
+Used for:
+✅ DTOs
+✅ request/response classes
+✅ common models
+
+Instead of copying DTOs into every service:
+👉 put them in ONE module
+👉 import like:
+
+implementation project(":hems-api-contracts")
+
+
+So:
+📦 one place for DTOs
+📦 all services use same classes
+📦 no mismatch
+
+🏗️ 7. How Gradle knows modules are connected?
+
+Because in parent:
+
+settings.gradle
+
+
+And in child:
+
+implementation project(":hems-api-contracts")
+
+
+This creates:
+
+SiteManagerService ---> hems-api-contracts
+
+
+Dependency graph:
+
+Parent
+ ├── SiteManagerService
+ │     └── hems-api-contracts
+ ├── auth-service-hems
+ └── ServiceRegistry-HEMS
+
+🧪 8. Difference: Single vs Multi Module
+❌ Single module:
+one-service
+ └── src
+
+✅ Multi module:
+parent
+ ├── service1
+ ├── service2
+ └── shared-lib
+
+
+Used in:
+✔ Microservices
+✔ Large systems
+✔ Enterprise projects
+
+📝 FINAL SHORT NOTES (copy this)
+
+Multi-module Gradle project means:
+
+One parent project that manages many sub-projects.
+
+Why parent project is needed:
+
+To build all modules together
+
+To share configuration and dependencies
+
+To manage versions in one place
+
+settings.gradle:
+
+Defines which folders are modules
+
+build.gradle (parent):
+
+Holds common config for all modules
+
+gradlew:
+
+Gradle wrapper
+
+Ensures same Gradle version for everyone
+
+Shared module (like hems-api-contracts):
+
+Contains common DTOs/models
+
+Used by all services using implementation project(":module")

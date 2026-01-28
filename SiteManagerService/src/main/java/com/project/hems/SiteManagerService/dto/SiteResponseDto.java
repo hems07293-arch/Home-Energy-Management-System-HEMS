@@ -18,5 +18,4 @@ public class SiteResponseDto {
     private BatteryDto batteryInfo;
     private AddressDto addressInfo;
     private List<UUID> programId;
-
 }
