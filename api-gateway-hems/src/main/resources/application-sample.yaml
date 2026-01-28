@@ -5,22 +5,21 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: 
+          issuer-uri: https://dev-0x5bg1uy1egiz4y0.us.auth0.com/
           audiences:
-            - 
+            - https://api.mfa01.com
 
       client:
         registration:
           auth0:
             client-id: 
             client-secret: 
+            authorization-grant-type: authorization_code
             scope:
               - openid
               - profile
               - email
               - offline_access
-            audiences:
-              - https://api.mfa01.com
 
         provider:
           auth0:
@@ -55,9 +54,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://localhost:8091/eureka
-
-
-
 
 server:
   port: 8090

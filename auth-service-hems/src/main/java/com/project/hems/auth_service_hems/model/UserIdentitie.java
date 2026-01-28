@@ -6,8 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -20,11 +18,11 @@ import java.util.UUID;
 public class UserIdentitie {
 
     /*
-    id (PK)
-    user_id (FK → users.id)
-    provider (auth0 / google / github)
-    provider_sub (UNIQUE)
-    created_at
+     * id (PK)
+     * user_id (FK → users.id)
+     * provider (auth0 / google / github)
+     * provider_sub (UNIQUE)
+     * created_at
      */
 
     @Id
@@ -33,7 +31,7 @@ public class UserIdentitie {
 
     @ManyToOne
     @JsonBackReference
-    @JoinColumn(name = "user_id",nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Column(name = "provider")
@@ -42,9 +40,7 @@ public class UserIdentitie {
     @Column(name = "provider_sub")
     private String providerSub;
 
-    @Column(name = "created_at",nullable = false,updatable = true)
+    @Column(name = "created_at", nullable = false, updatable = true)
     private LocalDateTime created_time;
-
-
 
 }

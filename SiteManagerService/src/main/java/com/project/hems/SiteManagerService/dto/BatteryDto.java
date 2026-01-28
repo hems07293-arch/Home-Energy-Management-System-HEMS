@@ -1,7 +1,9 @@
 package com.project.hems.SiteManagerService.dto;
+
 import lombok.Data;
 
 import java.util.UUID;
+
 @Data
 public class BatteryDto {
     private UUID id;

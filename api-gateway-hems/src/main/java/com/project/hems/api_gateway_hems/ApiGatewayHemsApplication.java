@@ -2,7 +2,6 @@ package com.project.hems.api_gateway_hems;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.reactive.config.EnableWebFlux;
 
 @SpringBootApplication
 public class ApiGatewayHemsApplication {
@@ -11,4 +10,3 @@ public class ApiGatewayHemsApplication {
 		SpringApplication.run(ApiGatewayHemsApplication.class, args);
 	}
 }
- 

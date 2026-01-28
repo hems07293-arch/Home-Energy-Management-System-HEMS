@@ -3,7 +3,6 @@ package com.project.hems.SiteManagerService.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.*;
@@ -19,7 +18,7 @@ public class Battery {
     private UUID id;
 
     @NotNull(message = "site cannot be empty")
-    @Min(value = 1,message = "minimum one battery is required for storing solar generated power")
+    @Min(value = 1, message = "minimum one battery is required for storing solar generated power")
     private int quantity;
 
     @NotNull(message = "battery capacity cannot be empty")

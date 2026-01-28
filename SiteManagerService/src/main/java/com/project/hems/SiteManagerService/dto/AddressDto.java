@@ -1,5 +1,5 @@
 package com.project.hems.SiteManagerService.dto;
-import com.project.hems.SiteManagerService.entity.Site;
+
 import lombok.Data;
 
 import java.util.UUID;
