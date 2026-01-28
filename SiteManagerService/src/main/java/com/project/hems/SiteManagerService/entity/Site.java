@@ -1,6 +1,5 @@
 package com.project.hems.SiteManagerService.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -14,15 +13,15 @@ import java.util.UUID;
 @Entity
 @Table(name = "sites")
 @Data
-@ToString(exclude = {"owner", "solar", "battery", "address"})
+@ToString(exclude = { "owner", "solar", "battery", "address" })
 public class Site {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
+    // @Id
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    // private Long id;
 
     @ManyToOne
     @JoinColumn(name = "owner")
@@ -33,29 +32,29 @@ public class Site {
     @NotNull(message = "active status is required")
     private boolean isActive;
 
-    @OneToMany(mappedBy = "site",cascade = CascadeType.ALL) //one site have many solar panel
-    @JsonManagedReference //parent side
+    @OneToMany(mappedBy = "site", cascade = CascadeType.ALL) // one site have many solar panel
+    @JsonManagedReference // parent side
     @NotEmpty(message = "solar entity number cannot be empty")
     private List<Solar> solar;
 
-    @OneToOne(mappedBy = "site",cascade = CascadeType.ALL)//aa discuaa karvu ke ama One site have many battery hoi sake and
-    //solar class ni under inverter max capacity nu su matlab??
-    //and battery class ni under quantity?? battery info toh ek j battery ni hase ne
+    @OneToOne(mappedBy = "site", cascade = CascadeType.ALL) // aa discuaa karvu ke ama One site have many battery hoi
+                                                            // sake and
+    // solar class ni under inverter max capacity nu su matlab??
+    // and battery class ni under quantity?? battery info toh ek j battery ni hase
+    // ne
     @JsonManagedReference
     @NotNull(message = "battery entity cannot be null")
     private Battery battery;
 
-    @OneToOne(mappedBy = "site",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "site", cascade = CascadeType.ALL)
     @JsonManagedReference
     @NotNull(message = "address entity cannot be null")
     private Address address;
 
-    //private List<UUID> enrollProgramIds;//ahiya apde direct List<Program> na kari sakiee..
+    // private List<UUID> enrollProgramIds;//ahiya apde direct List<Program> na kari
+    // sakiee..
     @ElementCollection
-    @CollectionTable(
-            name = "site_programs",
-            joinColumns = @JoinColumn(name = "site_id")
-    )
+    @CollectionTable(name = "site_programs", joinColumns = @JoinColumn(name = "site_id"))
     @Column(name = "program_id")
     @NotEmpty(message = "must be one program id is needed")
     private List<UUID> enrollProgramIds;

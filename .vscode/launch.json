@@ -37,7 +37,8 @@
             "mainClass": "com.project.hems.SiteManagerService.SiteManagerServiceApplication",
             "projectName": "SiteManagerService",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=34725 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=SiteManagerService"
         },
         {
             "type": "java",
@@ -56,6 +57,16 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "com.project.hems.simulator_service.SimulatorServiceApplication",
             "projectName": "simulator-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ApiGatewayHemsApplication<api-gateway-hems>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.project.hems.api_gateway_hems.ApiGatewayHemsApplication",
+            "projectName": "api-gateway-hems",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
