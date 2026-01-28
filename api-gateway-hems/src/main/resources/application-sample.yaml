@@ -23,7 +23,7 @@ spring:
 
         provider:
           auth0:
-            issuer-uri: https://dev-0x5bg1uy1egiz4y0.us.auth0.com/
+            issuer-uri:
   cloud:
     gateway:
       server:
@@ -40,6 +40,11 @@ spring:
               uri: http://localhost:8082
               predicates:
                 - Path=/auth/**
+
+            - id: vpp-service-route
+              uri: http://localhost:8086
+              predicates:
+              - Path=/vpp/**
 
 eureka:
   instance:

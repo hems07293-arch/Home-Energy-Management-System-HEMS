@@ -47,16 +47,17 @@ public class SiteController {
         Site site=siteService.createSite(siteRequestDto,userSub);
         return new ResponseEntity<>(site,HttpStatus.CREATED);
     }
-    @GetMapping("/fetch-site-by-id/{siteId}")
-    public ResponseEntity<Site> getSite(@PathVariable UUID siteId){
-        Site site=siteService.fetchSiteById(siteId);
-        return new ResponseEntity<>(site,HttpStatus.OK);
-    }
+        @GetMapping("/fetch-site-by-id/{siteId}")
+        public ResponseEntity<Site> getSite(@PathVariable UUID siteId){
+            Site site=siteService.fetchSiteById(siteId);
+            return new ResponseEntity<>(site,HttpStatus.OK);
+        }
 
         @GetMapping("/fetch-all-site")
-        public ResponseEntity<List<Site>> getAllSites(){
+        public ResponseEntity<List<Site>> getAllSites(@AuthenticationPrincipal Jwt jwt){
             List<Site> sites=siteService.fetchAllSite();
             log.info("/fetch-all-site api call");
+            System.out.println("token is"+jwt.getTokenValue());
             return new ResponseEntity<>(sites,HttpStatus.OK);
         }
 
