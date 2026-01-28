@@ -1,0 +1,13 @@
+🧨 STEP 1: Close IntelliJ completely
+
+No projects open.
+
+🧨 STEP 2: Delete IntelliJ metadata
+
+From Terminal in the root folder:
+
+rm -rf .idea
+find . -name "*.iml" -delete
+
+
+This wipes the corrupted project model.

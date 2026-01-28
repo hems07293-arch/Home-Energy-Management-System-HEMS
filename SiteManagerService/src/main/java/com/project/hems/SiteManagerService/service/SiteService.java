@@ -1,6 +1,6 @@
 package com.project.hems.SiteManagerService.service;
 
-import com.project.hems.SiteManagerService.dto.KafkaSiteProducerDto;
+import com.project.hems.SiteManagerService.dto.SiteCreationEvent;
 import com.project.hems.SiteManagerService.dto.SiteRequestDto;
 import com.project.hems.SiteManagerService.entity.*;
 import com.project.hems.SiteManagerService.exception.ResourceNotFoundException;
@@ -26,7 +26,7 @@ public class SiteService {
     private final SiteRepo siteRepo;
     private final OwnerRepo ownerRepo;
     private final ValueMapper valueMapper;
-    private final KafkaTemplate<String, KafkaSiteProducerDto> kafkaTemplate;
+    private final KafkaTemplate<String, SiteCreationEvent> kafkaTemplate;
     @Value("${property.config.kafka.site-creation-topic}")
     public String siteCreationTopic;
 
@@ -76,11 +76,12 @@ public class SiteService {
         //todo:-
         //site ni pan dto banavine work karvu siteResponseDto che toh e pass karvo
         UUID id=savedSite.getId();
-        KafkaSiteProducerDto kafkaSiteProducerDto = KafkaSiteProducerDto.builder()
+        SiteCreationEvent siteCreationEvent = SiteCreationEvent.builder()
                 .siteId(id)
+                .batteryCapacityW(5000.00)
                 .build();
-        kafkaTemplate.send(siteCreationTopic,kafkaSiteProducerDto);
-        log.info("kafka event send to site creation topic body is "+id);
+        kafkaTemplate.send(siteCreationTopic,siteCreationEvent);
+        log.info("kafka event send to site creation topic body is "+siteCreationEvent);
         return savedSite;
 
 

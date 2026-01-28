@@ -4,12 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1959c072-e902-4e8b-b6d4-48a30cfcc3c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api-gateway-hems/src/main/resources/application.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/simulator-service/src/main/java/com/project/hems/simulator_service/service/SiteCreationConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway-hems/src/main/java/com/project/hems/api_gateway_hems/controller/DebugController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway-hems/src/main/java/com/project/hems/api_gateway_hems/controller/DebugController.java" afterDir="false" />
+    <list default="true" id="326b55e5-542f-4f9b-85ac-42589d3bdc25" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/Home-Energy-Management-System-HEMS.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/SiteManagerService.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SiteManagerService/src/main/java/com/project/hems/SiteManagerService/dto/SiteCreationEvent.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/envoy-manager-service/src/main/java/com/project/hems/envoy_manager_service/config/KafkaConsumerConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SiteManagerService/src/main/java/com/project/hems/SiteManagerService/dto/KafkaSiteProducerDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/SiteManagerService/src/main/java/com/project/hems/SiteManagerService/service/SiteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/SiteManagerService/src/main/java/com/project/hems/SiteManagerService/service/SiteService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/envoy-manager-service" beforeDir="false" afterPath="$PROJECT_DIR$/envoy-manager-service" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/simulator-service/src/main/java/com/project/hems/simulator_service/config/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/simulator-service/src/main/java/com/project/hems/simulator_service/config/KafkaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/envoy-manager-service/src/main/java/com/project/hems/envoy_manager_service/config/KafkaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/envoy-manager-service/src/main/java/com/project/hems/envoy_manager_service/config/KafkaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/envoy-manager-service/src/main/java/com/project/hems/envoy_manager_service/service/KafkaConsumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/envoy-manager-service/src/main/java/com/project/hems/envoy_manager_service/service/KafkaConsumerService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,115 +58,50 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$/api-gateway-hems">
-          <activation />
-        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="api-gateway-hems" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
       </state>
     </system>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/envoy-manager-service" />
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 4
-}</component>
-  <component name="ProjectId" id="38q18IWOlublSPoh4I8zjgScQ2O" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="38rx30Lf7ZsHJYkThz1Wk59Ojh5" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Gradle.Download Sources.executor": "Run",
-    "Gradle.ServiceRegistry-HEMS [:com.project.hems.ServiceRegistry_HEMS.ServiceRegistryHemsApplication.main()].executor": "Run",
-    "Gradle.SiteManagerService [:com.project.hems.SiteManagerService.SiteManagerServiceApplication.main()].executor": "Run",
-    "Gradle.api-gateway-hems [:com.project.hems.api_gateway_hems.ApiGatewayHemsApplication.main()].executor": "Run",
-    "Gradle.api-gateway-hems [build].executor": "Run",
-    "Gradle.auth-service-hems [:com.project.hems.auth_service_hems.AuthServiceHemsApplication.main()].executor": "Run",
-    "Gradle.envoy-manager-service [:com.project.hems.envoy_manager_service.EnvoyManagerServiceApplication.main()].executor": "Run",
-    "Gradle.simulator-service [:com.project.hems.simulator_service.SimulatorServiceApplication.main()].executor": "Run",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
-    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/Users/jillspatel/Desktop/IntelliJ/Home-Energy-Management-System-HEMS",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.28426862",
     "settings.editor.selected.configurable": "com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/api-gateway-hems/src/main" />
-      <recent name="$PROJECT_DIR$/ServiceRegistry-HEMS/src/main" />
-    </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="ApiGatewayHemsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.project.hems.api_gateway_hems.ApiGatewayHemsApplication" />
-      <module name="api-gateway-hems.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.project.hems.api_gateway_hems.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="api-gateway-hems [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/api-gateway-hems" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Gradle.api-gateway-hems [build]" />
-        <item itemvalue="Application.ApiGatewayHemsApplication" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1959c072-e902-4e8b-b6d4-48a30cfcc3c2" name="Changes" comment="" />
-      <created>1769512126053</created>
+      <changelist id="326b55e5-542f-4f9b-85ac-42589d3bdc25" name="Changes" comment="" />
+      <created>1769571288255</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1769512126053</updated>
+      <updated>1769571288255</updated>
     </task>
     <servers />
   </component>

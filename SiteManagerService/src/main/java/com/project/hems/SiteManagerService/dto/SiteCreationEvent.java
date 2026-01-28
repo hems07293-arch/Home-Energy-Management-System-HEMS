@@ -2,11 +2,15 @@ package com.project.hems.SiteManagerService.dto;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.UUID;
 
+@ToString
 @Data
 @Builder
-public class KafkaSiteProducerDto {
+public class SiteCreationEvent {
+
     private UUID siteId;
+    private Double batteryCapacityW;
 }
