@@ -1,7 +1,7 @@
 package com.project.hems.SiteManagerService.service;
 
+import com.project.hems.SiteManagerService.dto.SiteCreationEvent;
 import com.project.hems.SiteManagerService.dto.SiteRequestDto;
-import com.project.hems.SiteManagerService.dto.SiteResponseDto;
 import com.project.hems.SiteManagerService.entity.*;
 import com.project.hems.SiteManagerService.exception.ResourceNotFoundException;
 import com.project.hems.SiteManagerService.repository.OwnerRepo;
@@ -9,12 +9,10 @@ import com.project.hems.SiteManagerService.repository.SiteRepo;
 import com.project.hems.SiteManagerService.util.ValueMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -28,7 +26,7 @@ public class SiteService {
     private final SiteRepo siteRepo;
     private final OwnerRepo ownerRepo;
     private final ValueMapper valueMapper;
-    private final KafkaTemplate<String,Long> kafkaTemplate;
+    private final KafkaTemplate<String, SiteCreationEvent> kafkaTemplate;
     @Value("${property.config.kafka.site-creation-topic}")
     public String siteCreationTopic;
 
@@ -77,9 +75,13 @@ public class SiteService {
 
         //todo:-
         //site ni pan dto banavine work karvu siteResponseDto che toh e pass karvo
-        Long id=savedSite.getId();
-        kafkaTemplate.send(siteCreationTopic,id);
-        log.info("kafka event send to site creation topic body is "+id);
+        UUID id=savedSite.getId();
+        SiteCreationEvent siteCreationEvent = SiteCreationEvent.builder()
+                .siteId(id)
+                .batteryCapacityW(5000.00)
+                .build();
+        kafkaTemplate.send(siteCreationTopic,siteCreationEvent);
+        log.info("kafka event send to site creation topic body is "+siteCreationEvent);
         return savedSite;
 
 

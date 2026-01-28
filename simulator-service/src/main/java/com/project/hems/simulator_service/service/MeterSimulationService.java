@@ -20,6 +20,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 
 @Slf4j
 @Service
@@ -28,7 +29,7 @@ import java.util.Optional;
 @ConfigurationProperties(prefix = "property.config.kafka")
 public class MeterSimulationService {
 
-        private final Map<String, MeterSnapshot> meterReadings;
+        private final Map<UUID, MeterSnapshot> meterReadings;
         private final MeterManagementService meterManagementService;
         private final MeterRepository meterRepository;
         private final ModelMapper mapper;
@@ -50,7 +51,7 @@ public class MeterSimulationService {
 
                 log.info("saveMeterSnapshotToDB: storing {} meters", meterReadings.size());
 
-                for (Map.Entry<String, MeterSnapshot> entry : meterReadings.entrySet()) {
+                for (Map.Entry<UUID, MeterSnapshot> entry : meterReadings.entrySet()) {
 
                         MeterSnapshot meter = entry.getValue();
 
@@ -74,9 +75,9 @@ public class MeterSimulationService {
                                 "simulateLiveReadings: starting simulation cycle for {} meters",
                                 meterReadings.size());
 
-                for (Map.Entry<String, MeterSnapshot> entry : meterReadings.entrySet()) {
+                for (Map.Entry<UUID, MeterSnapshot> entry : meterReadings.entrySet()) {
 
-                        String siteId = entry.getKey();
+                        UUID siteId = entry.getKey();
                         MeterSnapshot meter = entry.getValue();
 
                         log.debug(

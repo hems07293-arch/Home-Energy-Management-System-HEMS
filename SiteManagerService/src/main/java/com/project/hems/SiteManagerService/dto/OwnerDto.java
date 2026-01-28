@@ -11,7 +11,6 @@ public class OwnerDto {
     private String ownerName;
     private String email;
     private String phoneNo;
-    //change karelu che UUID -> Long
-    private List<Long> sitesIds;
+    private List<UUID> sitesIds;
 
 }

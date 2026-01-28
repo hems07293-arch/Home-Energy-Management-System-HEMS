@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Home-Energy-Management-System-HEMS.iml" filepath="$PROJECT_DIR$/.idea/Home-Energy-Management-System-HEMS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SiteManagerService.main.iml" filepath="$PROJECT_DIR$/.idea/modules/SiteManagerService.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/auth-service-hems.main.iml" filepath="$PROJECT_DIR$/.idea/modules/auth-service-hems.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/envoy-manager-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/envoy-manager-service.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/simulator-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/simulator-service.main.iml" />
+    </modules>
+  </component>
+</project>

@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface MeterRepository extends JpaRepository<MeterEntity, Long> {
+public interface MeterRepository extends JpaRepository<MeterEntity, UUID> {
     Optional<MeterEntity> findBySiteId(UUID siteId);
 }

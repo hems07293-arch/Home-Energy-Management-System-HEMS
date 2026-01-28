@@ -16,13 +16,13 @@ import java.util.UUID;
 @Data
 @ToString(exclude = {"owner", "solar", "battery", "address"})
 public class Site {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.UUID)
-//    private UUID id;
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "owner")
