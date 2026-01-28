@@ -5,19 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="326b55e5-542f-4f9b-85ac-42589d3bdc25" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SiteManagerService/bin/main/com/project/hems/SiteManagerService/controller/SiteController.class" beforeDir="false" afterPath="$PROJECT_DIR$/SiteManagerService/bin/main/com/project/hems/SiteManagerService/controller/SiteController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SiteManagerService/src/main/java/com/project/hems/SiteManagerService/controller/SiteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/SiteManagerService/src/main/java/com/project/hems/SiteManagerService/controller/SiteController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SiteManagerService/src/main/java/com/project/hems/SiteManagerService/dto/SiteResponseDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/SiteManagerService/src/main/java/com/project/hems/SiteManagerService/dto/SiteResponseDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Virtual-Power-Plant/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Virtual-Power-Plant/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Virtual-Power-Plant/src/main/java/com/hems/project/Virtual_Power_Plant/VirtualPowerPlantApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Virtual-Power-Plant/src/main/java/com/hems/project/Virtual_Power_Plant/VirtualPowerPlantApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Virtual-Power-Plant/src/main/resources/application-sample.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Virtual-Power-Plant/src/main/resources/application-sample.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway-hems/src/main/java/com/project/hems/api_gateway_hems/ApiGatewayHemsApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway-hems/src/main/java/com/project/hems/api_gateway_hems/ApiGatewayHemsApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway-hems/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway-hems/src/main/resources/application.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,12 +53,7 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="api-gateway-hems" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -149,5 +142,16 @@
       <updated>1769571288255</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
