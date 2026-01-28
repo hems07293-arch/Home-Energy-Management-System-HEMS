@@ -1,9 +1,6 @@
 package com.project.hems.SiteManagerService.dto;
 
-import com.project.hems.SiteManagerService.entity.Address;
-import com.project.hems.SiteManagerService.entity.Battery;
 import com.project.hems.SiteManagerService.entity.Owner;
-import com.project.hems.SiteManagerService.entity.Solar;
 import lombok.Data;
 
 import java.util.List;

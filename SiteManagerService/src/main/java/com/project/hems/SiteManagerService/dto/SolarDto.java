@@ -1,9 +1,9 @@
 package com.project.hems.SiteManagerService.dto;
 
-import com.project.hems.SiteManagerService.entity.Site;
 import lombok.Data;
 
 import java.util.UUID;
+
 @Data
 public class SolarDto {
     private UUID id;
@@ -12,4 +12,3 @@ public class SolarDto {
     private String orientation;
     private UUID siteId;
 }
-

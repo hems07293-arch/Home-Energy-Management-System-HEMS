@@ -1,7 +1,5 @@
 package com.project.hems.SiteManagerService.config;
 
-import jakarta.validation.groups.Default;
-import org.apache.http.HttpRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -19,9 +17,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                        .anyRequest().authenticated()
-                )
-                .oauth2ResourceServer(oauth->oauth.jwt(Customizer.withDefaults()));
+                        .anyRequest().authenticated())
+                .oauth2ResourceServer(oauth -> oauth.jwt(Customizer.withDefaults()));
 
         return http.build();
     }
