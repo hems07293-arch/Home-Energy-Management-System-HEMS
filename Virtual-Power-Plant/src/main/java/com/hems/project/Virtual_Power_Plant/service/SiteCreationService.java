@@ -5,10 +5,8 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.hems.project.Virtual_Power_Plant.dto.OwnerDto;
 import com.hems.project.Virtual_Power_Plant.external.SiteFeignClientService;
-
-
+import com.hems.project.hems_api_contracts.contract.site.OwnerDto;
 
 import lombok.RequiredArgsConstructor;
 

@@ -1,4 +1,4 @@
-package com.project.hems.SiteManagerService.dto;
+package com.hems.project.hems_api_contracts.contract.site;
 
 import lombok.Builder;
 import lombok.Data;
