@@ -76,7 +76,10 @@ public class SiteService {
         // todo:-
         // site ni pan dto banavine work karvu siteResponseDto che toh e pass karvo
         UUID id = savedSite.getId();
-        SiteCreationEvent siteCreationEvent=SiteCreationEvent.builder().siteId(id).build();
+        SiteCreationEvent siteCreationEvent = SiteCreationEvent.builder()
+                .siteId(id)
+                .batteryCapacityW(savedSite.getBattery().getCapacity())
+                .build();
         kafkaTemplate.send(siteCreationTopic, siteCreationEvent);
         log.info("kafka event send to site creation topic body is " + id);
         return savedSite;
@@ -89,7 +92,7 @@ public class SiteService {
                 .orElseThrow(() -> new ResourceNotFoundException("site is not found with site id :- " + siteId));
         System.out.println("running on thread :- " + Thread.currentThread());
         return site;
-        
+
     }
 
     //
@@ -106,9 +109,9 @@ public class SiteService {
         return sites;
     }
 
-     public List<SiteResponseDto> fetchAllSiteV2() {
+    public List<SiteResponseDto> fetchAllSiteV2() {
         List<Site> sites = siteRepo.findAll();
-        List<SiteResponseDto> siteResponseDtos=sites.stream().map(valueMapper::siteModelToResponseDto).toList();
+        List<SiteResponseDto> siteResponseDtos = sites.stream().map(valueMapper::siteModelToResponseDto).toList();
         return siteResponseDtos;
     }
 

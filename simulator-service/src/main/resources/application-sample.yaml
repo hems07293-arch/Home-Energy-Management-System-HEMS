@@ -21,12 +21,17 @@ spring:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer  
 
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8091/eureka
+
 server:
   port: 9010
-
-simulation-redis:
-  config:
-    redis-key: "simulator:siteId:"
 
 property:
   config:

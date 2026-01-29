@@ -23,7 +23,7 @@ spring:
 
         provider:
           auth0:
-            issuer-uri:
+            issuer-uri: https://dev-0x5bg1uy1egiz4y0.us.auth0.com/
   cloud:
     gateway:
       server:
