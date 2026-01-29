@@ -1,11 +1,10 @@
 package com.project.hems.envoy_manager_service.service;
 
 import java.time.Instant;
-import java.util.Optional;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.project.hems.envoy_manager_service.domain.MeterHistory;
 import com.project.hems.envoy_manager_service.model.BatteryControl;
 import com.project.hems.envoy_manager_service.model.GridControl;
 import com.project.hems.envoy_manager_service.model.GridControl.GridControlBuilder;
@@ -14,7 +13,8 @@ import com.project.hems.envoy_manager_service.model.SiteControlCommand;
 import com.project.hems.envoy_manager_service.model.SiteControlCommand.SiteControlCommandBuilder;
 import com.project.hems.envoy_manager_service.model.dispatch.DispatchEvent;
 import com.project.hems.envoy_manager_service.model.simulator.BatteryMode;
-import com.project.hems.envoy_manager_service.repository.MeterHistoryRepository;
+import com.project.hems.envoy_manager_service.model.simulator.MeterSnapshot;
+import com.project.hems.envoy_manager_service.web.exception.MeterStatusNotFoudException;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 @RequiredArgsConstructor
 public class CommandTranslatorService {
 
-    private final MeterHistoryRepository meterHistoryRepository;
+    private final SimulatorFeignClientService simulatorFeignClientService;
 
     public SiteControlCommand translateDispatchEvent(DispatchEvent dispatchEvent) {
 
@@ -33,24 +33,23 @@ public class CommandTranslatorService {
         commandBuilder.dispatchId(dispatchEvent.getDispatchId());
         commandBuilder.siteId(dispatchEvent.getSiteId());
 
-        Optional<MeterHistory> meterHistoryOptional = meterHistoryRepository
-                .findTopBySiteIdOrderByTimestampDesc(dispatchEvent.getSiteId());
+        // 2. Retrieve the meterId from received siteId
+        ResponseEntity<MeterSnapshot> meterData = simulatorFeignClientService.getMeterData(dispatchEvent.getSiteId());
+        if (meterData.getBody() == null) {
+            log.error("Unable to get the meterId with given siieId " + dispatchEvent.getSiteId());
+            throw new MeterStatusNotFoudException("METER_NOT_FOUND");
+        }
+        commandBuilder.meterId(meterData.getBody().getMeterId());
 
-        meterHistoryOptional.ifPresentOrElse(meterHistory -> {
-            commandBuilder.meterId(meterHistory.getMeterId());
-        }, () -> {
-            log.error("translateDispatchEvent: required meter history not found in db");
-        });
-
-        // 2. Calculate Expiry (validUntil = Now + durationSec)
+        // 3. Calculate Expiry (validUntil = Now + durationSec)
         commandBuilder.timestamp(Instant.now());
         commandBuilder.validUntil(Instant.now().plusSeconds(dispatchEvent.getDurationSec()));
 
-        // 3. Map Priorities directly
+        // 4. Map Priorities directly
         commandBuilder.energyPriority(dispatchEvent.getEnergyPriority());
         commandBuilder.reason(dispatchEvent.getReason());
 
-        // 4. Initialize Default Controls (Safety First!)
+        // 5. Initialize Default Controls (Safety First!)
         BatteryControlBuilder batteryControlBuilder = BatteryControl.builder();
         GridControlBuilder gridControlBuilder = GridControl.builder();
 

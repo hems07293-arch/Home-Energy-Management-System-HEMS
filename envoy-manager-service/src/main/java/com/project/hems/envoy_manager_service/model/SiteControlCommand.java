@@ -16,7 +16,7 @@ import lombok.ToString;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SiteControlCommand {
 
-    private Long dispatchId;
+    private UUID dispatchId;
     private UUID siteId;
     private Long meterId;
 

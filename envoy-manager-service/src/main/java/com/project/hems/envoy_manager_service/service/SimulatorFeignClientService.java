@@ -16,7 +16,7 @@ import com.project.hems.envoy_manager_service.model.SiteControlCommand;
 import com.project.hems.envoy_manager_service.model.simulator.BatteryMode;
 import com.project.hems.envoy_manager_service.model.simulator.MeterSnapshot;
 
-@FeignClient(name = "simulator-service-testing", url = "http://localhost:9010", path = "/api/v1/simulation")
+@FeignClient(name = "simulator-service", url = "http://localhost:9010", path = "/api/v1/simulation")
 public interface SimulatorFeignClientService {
 
     @PostMapping("/activate-meter/{siteId}")
@@ -29,9 +29,9 @@ public interface SimulatorFeignClientService {
     @PutMapping("/change-battery-mode/{siteId}")
     public void changeBatteryMode(@PathVariable("siteId") Long siteId, @RequestBody BatteryMode batteryMode);
 
-    @GetMapping("/get-meter-data/{siteId}")
-    public ResponseEntity<MeterSnapshot> getMeterData(@PathVariable("siteId") Long siteId);
-
     @PostMapping("/dispatch")
     public ResponseEntity<Void> applyDispatch(@RequestBody SiteControlCommand command);
+
+    @GetMapping("/get-meter-data/{siteId}")
+    public ResponseEntity<MeterSnapshot> getMeterData(@PathVariable(name = "siteId", required = true) UUID siteId);
 }

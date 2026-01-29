@@ -23,7 +23,7 @@ import lombok.ToString;
 public class DispatchEvent {
 
     @NotNull(message = "dispatchId cannot be null")
-    private Long dispatchId;
+    private UUID dispatchId;
 
     @NotNull(message = "siteId cannot be null")
     private UUID siteId;
