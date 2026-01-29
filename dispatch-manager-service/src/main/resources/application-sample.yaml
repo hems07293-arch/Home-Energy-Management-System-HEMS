@@ -2,6 +2,14 @@ spring:
   application:
     name: dispatch-manager-service
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-0x5bg1uy1egiz4y0.us.auth0.com/
+          scope:
+            - email
+
   kafka:
     producer:
       acks: 1

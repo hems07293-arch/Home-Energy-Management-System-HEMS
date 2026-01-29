@@ -3,6 +3,14 @@ spring:
   application:
     name: simulator-service-testing
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-0x5bg1uy1egiz4y0.us.auth0.com/
+          scope:
+            - email
+
   datasource:
     url: jdbc:mysql://localhost:3306/simulator_service
     username: 
