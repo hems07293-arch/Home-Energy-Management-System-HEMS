@@ -18,9 +18,9 @@ spring:
     show-sql: true
   main:
     allow-bean-definition-overriding: true
-  threads:
-    virtual:
-      enabled: true
+  # threads:
+  #   virtual:
+  #     enabled: true
   application:
     name: SITE-SERVICE-HEMS
   security:

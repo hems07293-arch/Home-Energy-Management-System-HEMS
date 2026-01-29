@@ -15,7 +15,6 @@ import com.hems.project.Virtual_Power_Plant.service.SiteCreationService;
 import com.hems.project.hems_api_contracts.contract.site.OwnerDto;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RequiredArgsConstructor
 @RequestMapping("/vpp")

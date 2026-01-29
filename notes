@@ -13,6 +13,37 @@ find . -name "*.iml" -delete
 This wipes the corrupted project model.
 
 
+-----------
+## how to set gradle verson using sdk man :-
+
+🔹 Install Gradle 8.5 (safe for Spring Boot 3.x)
+
+Run:
+
+sdk install gradle 8.5
+
+
+Then set it as default:
+
+sdk default gradle 8.5
+
+
+Check:
+
+gradle -v
+
+
+-----------
+## root project ma gradle karelu che and bija badha ena sub module che so how we run :-
+./gradlew build -x test    (test ne build na karva)
+
+
+----------
+## and main root mathi j below service run karvi hoy toh:-
+./gradlew :Virtual-Power-Plant:bootRun
+
+because VPP ni under apde hems-api-contract ni depdendcy nakheli che so apde direct vpp ne run karsu toh
+sproing ne evu lagse ke vpp root folder che and hems-api-contract eni under che and error apse 
 
 -----------
 je service ma apde feingClient use kariee and eni under apde api na dto ne e badhu jotu hoy toh same copy paste

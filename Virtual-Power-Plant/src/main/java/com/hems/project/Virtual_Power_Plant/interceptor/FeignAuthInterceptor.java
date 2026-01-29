@@ -1,7 +1,6 @@
 package com.hems.project.Virtual_Power_Plant.interceptor;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -25,10 +24,5 @@ public class FeignAuthInterceptor implements RequestInterceptor{
                 System.out.println("no token is avaliable for this request");
             }
         }
-    }
-
-
-    
-    
-    
+    }       
 }
