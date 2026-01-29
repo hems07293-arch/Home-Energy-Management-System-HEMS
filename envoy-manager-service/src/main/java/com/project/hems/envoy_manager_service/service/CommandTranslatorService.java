@@ -13,7 +13,6 @@ import com.project.hems.envoy_manager_service.model.BatteryControl.BatteryContro
 import com.project.hems.envoy_manager_service.model.SiteControlCommand;
 import com.project.hems.envoy_manager_service.model.SiteControlCommand.SiteControlCommandBuilder;
 import com.project.hems.envoy_manager_service.model.dispatch.DispatchEvent;
-import com.project.hems.envoy_manager_service.model.dispatch.DispatchEventType;
 import com.project.hems.envoy_manager_service.model.simulator.BatteryMode;
 import com.project.hems.envoy_manager_service.repository.MeterHistoryRepository;
 
@@ -63,7 +62,7 @@ public class CommandTranslatorService {
         // 5. THE LOGIC SWITCH (The "Brain" of the translation)
         switch (dispatchEvent.getEventType()) {
 
-            case DispatchEventType.EXPORT_POWER:
+            case EXPORT_POWER:
                 // Logic: Force battery to dump energy, allow grid to take it
                 batteryControlBuilder.mode(BatteryMode.FORCE_DISCHARGE);
 
@@ -76,7 +75,7 @@ public class CommandTranslatorService {
                 gridControlBuilder.maxImportW(10000.00); // Standard limit
                 break;
 
-            case DispatchEventType.IMPORT_POWER: // e.g. Charge before a storm
+            case IMPORT_POWER: // e.g. Charge before a storm
                 // Logic: Force charge, block exporting
                 batteryControlBuilder.mode(BatteryMode.FORCE_CHARGE);
                 batteryControlBuilder.maxChargeW(dispatchEvent.getPowerReqW());
@@ -85,7 +84,7 @@ public class CommandTranslatorService {
                 gridControlBuilder.maxImportW(dispatchEvent.getPowerReqW() * 1.1);
                 break;
 
-            case DispatchEventType.PEAK_SAVING: // Reduce grid usage during expensive hours
+            case PEAK_SAVING: // Reduce grid usage during expensive hours
                 // Logic: Use battery to cover home load, but don't force dump
                 batteryControlBuilder.mode(BatteryMode.AUTO); // Or "SELF_CONSUMPTION"
 
