@@ -105,7 +105,7 @@ public class ValueMapper {
         dto.setActive(site.isActive());
 
         if (site.getOwner() != null) {
-            dto.setOwner(site.getOwner());
+            dto.setOwner(ownerModelToDto(site.getOwner()));
         }
 
         if (site.getSolar() != null) {

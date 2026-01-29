@@ -2,14 +2,19 @@ package com.project.hems.SiteManagerService.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
 
 @Entity
 @Table(name = "owner_identity")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class OwnerIdentities {
     @Id

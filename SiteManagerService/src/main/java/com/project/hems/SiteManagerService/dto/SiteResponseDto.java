@@ -9,7 +9,7 @@ import java.util.UUID;
 @Data
 public class SiteResponseDto {
     private UUID siteId;
-    private Owner owner;
+    private OwnerDto owner;
     private boolean isActive;
     private List<SolarDto> solars;
     private BatteryDto batteryInfo;

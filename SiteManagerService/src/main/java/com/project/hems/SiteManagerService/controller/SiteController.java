@@ -1,6 +1,7 @@
 package com.project.hems.SiteManagerService.controller;
 
 import com.project.hems.SiteManagerService.dto.SiteRequestDto;
+import com.project.hems.SiteManagerService.dto.SiteResponseDto;
 import com.project.hems.SiteManagerService.entity.Site;
 import com.project.hems.SiteManagerService.service.SiteService;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -44,10 +45,19 @@ public class SiteController {
     }
 
     @GetMapping("/fetch-all-site")
-    public ResponseEntity<List<Site>> getAllSites(@AuthenticationPrincipal Jwt jwt) {
+    // public ResponseEntity<List<Site>> getAllSites(@AuthenticationPrincipal Jwt jwt) {
+    public ResponseEntity<List<Site>> getAllSites() {
         List<Site> sites = siteService.fetchAllSite();
         log.info("/fetch-all-site api call");
-        System.out.println("token is" + jwt.getTokenValue());
+        // System.out.println("token is" + jwt.getTokenValue());
+        return new ResponseEntity<>(sites, HttpStatus.OK);
+    }
+
+       @GetMapping("/fetch-all-site/v2")
+    public ResponseEntity<List<SiteResponseDto>> getAllSitesV2() {
+        List<SiteResponseDto> sites = siteService.fetchAllSiteV2();
+        log.info("/fetch-all-site/v2 api call");
+        // System.out.println("token is" + jwt.getTokenValue());
         return new ResponseEntity<>(sites, HttpStatus.OK);
     }
 

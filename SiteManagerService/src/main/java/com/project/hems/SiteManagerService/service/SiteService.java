@@ -2,6 +2,7 @@ package com.project.hems.SiteManagerService.service;
 
 import com.project.hems.SiteManagerService.dto.SiteCreationEvent;
 import com.project.hems.SiteManagerService.dto.SiteRequestDto;
+import com.project.hems.SiteManagerService.dto.SiteResponseDto;
 import com.project.hems.SiteManagerService.entity.*;
 import com.project.hems.SiteManagerService.exception.ResourceNotFoundException;
 import com.project.hems.SiteManagerService.repository.OwnerRepo;
@@ -75,7 +76,8 @@ public class SiteService {
         // todo:-
         // site ni pan dto banavine work karvu siteResponseDto che toh e pass karvo
         UUID id = savedSite.getId();
-        kafkaTemplate.send(siteCreationTopic, id);
+        SiteCreationEvent siteCreationEvent=SiteCreationEvent.builder().siteId(id).build();
+        kafkaTemplate.send(siteCreationTopic, siteCreationEvent);
         log.info("kafka event send to site creation topic body is " + id);
         return savedSite;
 
@@ -102,6 +104,12 @@ public class SiteService {
             return "Result based on Task 1: " + result;
         });
         return sites;
+    }
+
+     public List<SiteResponseDto> fetchAllSiteV2() {
+        List<Site> sites = siteRepo.findAll();
+        List<SiteResponseDto> siteResponseDtos=sites.stream().map(valueMapper::siteModelToResponseDto).toList();
+        return siteResponseDtos;
     }
 
     // @Async

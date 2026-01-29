@@ -11,10 +11,10 @@ import com.hems.project.hems_api_contracts.contract.site.OwnerDto;
 
 @FeignClient(name = "SITE-SERVICE-HEMS")
 public interface SiteFeignClientService {
-    
-        @GetMapping("/api/v1/site/fetch-all-site")
-        public ResponseEntity<List<SiteResponseDto>> getAllSites();
-
+  
         @GetMapping("/api/v1/owner/fetch-all-owner")
         public ResponseEntity<List<OwnerDto>> getAllOwner();
+
+         @GetMapping("api/v1/site/fetch-all-site/v2")
+       public ResponseEntity<List<SiteResponseDto>> getAllSitesV2();
 }

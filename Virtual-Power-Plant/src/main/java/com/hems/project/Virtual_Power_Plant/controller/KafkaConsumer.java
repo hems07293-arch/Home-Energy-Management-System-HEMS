@@ -1,7 +1,6 @@
 package com.hems.project.Virtual_Power_Plant.controller;
 
 import com.hems.project.Virtual_Power_Plant.entity.Region;
-import org.apache.kafka.clients.consumer.internals.Acknowledgements;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Component;

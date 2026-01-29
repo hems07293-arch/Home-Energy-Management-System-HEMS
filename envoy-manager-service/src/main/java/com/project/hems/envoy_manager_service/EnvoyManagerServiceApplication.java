@@ -11,9 +11,10 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableFeignClients(basePackages = "com.project.hems.envoy_manager_service")
 @ConfigurationPropertiesScan
 public class EnvoyManagerServiceApplication {
-
 	public static void main(String[] args) {
 		SpringApplication.run(EnvoyManagerServiceApplication.class, args);
 	}
+
+	
 
 }

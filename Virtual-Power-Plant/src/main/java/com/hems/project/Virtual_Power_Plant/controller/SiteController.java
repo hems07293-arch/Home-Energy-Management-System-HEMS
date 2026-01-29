@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.hems.project.Virtual_Power_Plant.service.SiteCreationService;
 import com.hems.project.hems_api_contracts.contract.site.OwnerDto;
+import com.hems.project.hems_api_contracts.contract.site.SiteResponseDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -22,13 +23,13 @@ import lombok.RequiredArgsConstructor;
 public class SiteController {
     private final SiteCreationService service;
     
-    // @GetMapping("/fetch-all-site")
-    // public ResponseEntity<List<Object>> fetchAllSite(){
-    //     return service.fetchAllSites();
-    // }
+    @GetMapping("/fetch-all-site")
+    public ResponseEntity<List<SiteResponseDto>> fetchAllSite(){
+        return service.fetchAllSites();
+    }
 
     @GetMapping("/fetch-all-owner")
-    public ResponseEntity<List<OwnerDto>> fetchAllSite(){
+    public ResponseEntity<List<OwnerDto>> fetchAllOwner(){
         return service.fetchAllOnwer();
     }
 
