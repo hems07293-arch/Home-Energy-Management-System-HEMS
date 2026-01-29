@@ -18,7 +18,6 @@ public class Site {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
-
     // @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
     // private Long id;
