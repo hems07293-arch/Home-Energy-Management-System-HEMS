@@ -37,7 +37,8 @@ public class CommandTranslatorService {
         ResponseEntity<MeterSnapshot> meterData = simulatorFeignClientService.getMeterData(dispatchEvent.getSiteId());
         if (meterData.getBody() == null) {
             log.error("Unable to get the meterId with given siieId " + dispatchEvent.getSiteId());
-            throw new MeterStatusNotFoudException("METER_NOT_FOUND");
+            throw new MeterStatusNotFoudException(
+                    "unable to find the meter detail with given site id " + dispatchEvent.getSiteId());
         }
         commandBuilder.meterId(meterData.getBody().getMeterId());
 

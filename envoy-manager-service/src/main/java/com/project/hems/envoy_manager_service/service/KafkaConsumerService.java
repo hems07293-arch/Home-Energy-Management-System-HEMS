@@ -1,5 +1,6 @@
 package com.project.hems.envoy_manager_service.service;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
@@ -9,11 +10,14 @@ import com.project.hems.envoy_manager_service.model.simulator.MeterSnapshot;
 import com.project.hems.envoy_manager_service.model.site.SiteCreationEvent;
 
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
+@Setter
+@ConfigurationProperties(prefix = "property.config.kafka")
 public class KafkaConsumerService {
 
         private String rawEnergyTopic;

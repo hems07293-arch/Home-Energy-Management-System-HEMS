@@ -2,6 +2,7 @@ package com.project.hems.simulator_service.model;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.UUID;
 
 import com.project.hems.simulator_service.model.envoy.BatteryControl;
 import com.project.hems.simulator_service.model.envoy.EnergyPriority;
@@ -20,6 +21,7 @@ import lombok.ToString;
 @Builder
 public class ActiveControlState {
 
+    private UUID dispatchId;
     private BatteryControl batteryControl;
     private GridControl gridControl;
     private List<EnergyPriority> energyPriorities;

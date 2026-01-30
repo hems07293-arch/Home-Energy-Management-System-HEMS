@@ -32,8 +32,18 @@ public class GlobalExceptionHandler {
     @ResponseStatus(code = HttpStatus.INTERNAL_SERVER_ERROR)
     public CustomizedErrorResponse handleInvalidBatteryStatusException(InvalidBatteryStatusException ex) {
         return CustomizedErrorResponse.builder()
-                .statusCode(HttpStatus.BAD_REQUEST.value())
+                .statusCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .error("INVALID_BATTERY_STATUS")
+                .message(ex.getMessage())
+                .build();
+    }
+
+    @ExceptionHandler(MeterAlreadyDispatchedException.class)
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    public CustomizedErrorResponse handleMeterAlreadyDispatchedException(MeterAlreadyDispatchedException ex) {
+        return CustomizedErrorResponse.builder()
+                .statusCode(HttpStatus.BAD_REQUEST.value())
+                .error("DUPLICATE_DISPATCH_COMMAND")
                 .message(ex.getMessage())
                 .build();
     }

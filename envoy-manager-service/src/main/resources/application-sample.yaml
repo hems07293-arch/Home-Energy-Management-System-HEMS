@@ -9,11 +9,24 @@ spring:
           issuer-uri: https://dev-0x5bg1uy1egiz4y0.us.auth0.com/
           scope:
             - email
+      
+      client:
+        registration:
+          auth0:
+            client-id: 
+            client-secret: 
+            authorization-grant-type: client_credentials
+
+        provider:
+          auth0:
+            token-uri: https://dev-0x5bg1uy1egiz4y0.us.auth0.com/oauth/token
+            issuer-uri: https://dev-0x5bg1uy1egiz4y0.us.auth0.com/
 
   datasource:
     url: jdbc:mysql://localhost:3306/envoy_service
     username: 
     password: 
+
   jpa:
     hibernate:
       ddl-auto: update
@@ -63,6 +76,11 @@ server:
 
 property:
   config:
+    security:
+      oauth2:
+        auth0:
+          audience: https://api.mfa01.com
+          registration_id: auth0
     meter-history:
       batch_size: 60
     kafka: 

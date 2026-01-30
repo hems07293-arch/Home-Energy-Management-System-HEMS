@@ -5,6 +5,7 @@ import com.project.hems.simulator_service.model.ActiveControlState;
 import com.project.hems.simulator_service.model.MeterSnapshot;
 import com.project.hems.simulator_service.model.envoy.DispatchCommand;
 import com.project.hems.simulator_service.service.MeterManagementService;
+import com.project.hems.simulator_service.web.exception.MeterStatusNotFoudException;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -34,32 +35,33 @@ public class MeterController {
     @GetMapping("/get-meter-data/{siteId}")
     public ResponseEntity<MeterSnapshot> getMeterData(@PathVariable(name = "siteId", required = true) UUID siteId) {
         log.info("get meter data for siteId: {}", siteId);
-        return new ResponseEntity<>(meterManagementService.getMeterData(siteId), HttpStatus.OK);
-    }
-
-    @GetMapping("/get-meter-id/{siteId}")
-    public Long findMeterIdBySiteId(@PathVariable(name = "siteId", required = true) UUID siteId) {
-        log.info("getMeterId: GET request to fetch meter id from siteId " + siteId);
-        return meterManagementService.getMeterData(siteId).getMeterId();
+        MeterSnapshot meterData = meterManagementService.getMeterData(siteId);
+        if (meterData == null) {
+            throw new MeterStatusNotFoudException("unable to find the meter detail with given site id " + siteId);
+        }
+        return new ResponseEntity<>(meterData, HttpStatus.OK);
     }
 
     @GetMapping("/get-all-meter-data")
-    public Map<String, MeterSnapshot> getAllMeterData() {
-        log.info("get meter data");
-        return meterReadings;
+    public ResponseEntity<Map<String, MeterSnapshot>> getAllMeterData() {
+        log.info("getAllMeterData: GET req for retreiving all meter details");
+        return new ResponseEntity<>(meterReadings, HttpStatus.OK);
     }
 
     @PostMapping("/activate-meter/{siteId}")
-    public void activateMeterData(@PathVariable(name = "siteId", required = true) UUID siteId,
+    public ResponseEntity<MeterSnapshot> activateMeterData(@PathVariable(name = "siteId", required = true) UUID siteId,
             @RequestBody Double batteryCapacity) {
-        log.info("activate meter: {}", siteId, batteryCapacity);
-        meterManagementService.activateMeter(siteId, batteryCapacity);
+        log.info("activateMeterData: POST req for activate meter: {}", siteId, batteryCapacity);
+        MeterSnapshot savedMeter = meterManagementService.activateMeter(siteId, batteryCapacity);
+
+        return new ResponseEntity<>(savedMeter, HttpStatus.CREATED);
     }
 
     @PostMapping("/dispatch")
-    public ResponseEntity<Void> applyDispatch(@RequestBody @Valid DispatchCommand command) {
-        log.info("applyDispatch: applying dispatch command received from envoy " + command);
+    public ResponseEntity<DispatchCommand> applyDispatch(@RequestBody @Valid DispatchCommand command) {
+        log.info("applyDispatch: POST req for applying dispatch command received from envoy " + command);
         ActiveControlState control = new ActiveControlState(
+                command.getDispatchId(),
                 command.getBatteryControl(),
                 command.getGridControl(),
                 command.getEnergyPriority(),
@@ -67,7 +69,7 @@ public class MeterController {
 
         activeControlStore.applyDispatch(command.getSiteId(), control);
 
-        return ResponseEntity.accepted().build();
+        return new ResponseEntity<>(command, HttpStatus.ACCEPTED);
     }
 
 }

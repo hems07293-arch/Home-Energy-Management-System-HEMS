@@ -1,7 +1,7 @@
 spring:
 
   application:
-    name: simulator-service-testing
+    name: simulator-service
 
   security:
     oauth2:

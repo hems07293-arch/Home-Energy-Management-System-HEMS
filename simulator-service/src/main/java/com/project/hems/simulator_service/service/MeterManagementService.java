@@ -6,7 +6,6 @@ import com.project.hems.simulator_service.model.BatteryMode;
 import com.project.hems.simulator_service.model.ChargingStatus;
 import com.project.hems.simulator_service.model.MeterSnapshot;
 import com.project.hems.simulator_service.repository.MeterRepository;
-
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -29,7 +28,7 @@ public class MeterManagementService {
 
     // 1. Create / Activate a meter (Persist to DB + Cache to Bean Map)
     @Transactional
-    public void activateMeter(UUID siteId, Double batteryCapacity) {
+    public MeterSnapshot activateMeter(UUID siteId, Double batteryCapacity) {
 
         // Entry log — helps trace meter lifecycle events
         log.info("activateMeter: activating meter for siteId={}", siteId);
@@ -78,6 +77,7 @@ public class MeterManagementService {
         meterReadings.put(siteId, snapshot);
 
         log.info("activateMeter: meter snapshot cached in Bean Map for siteId={} with TTL=10s", siteId);
+        return snapshot;
     }
 
     private MeterEntity saveNewEntityToDb(MeterSnapshot snapshot) {

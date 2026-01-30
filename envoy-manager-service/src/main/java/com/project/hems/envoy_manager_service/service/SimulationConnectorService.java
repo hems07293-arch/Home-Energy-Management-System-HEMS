@@ -21,10 +21,7 @@ public class SimulationConnectorService {
         try {
             log.info("Applying Dispatch Control to Meter {}", siteId);
 
-            // TODO: create a controller on simulator side for all these methods priority
-
             // Single Call to Update Simulation Settings
-            // Payload: { "mode": "FORCE_DISCHARGE", "maxDischargeW": 2000 ... }
             simulatorFeignClientService.applyDispatch(command);
 
             log.info("Successfully reconfigured Simulation for Dispatch ID: {}", command.getDispatchId());
@@ -33,7 +30,7 @@ public class SimulationConnectorService {
 
         Exception e) {
             log.error("Failed to push config to Simulation Service: " + e.getMessage());
-            // Optional: Retry logic or alert Dispatch Manager of failure
+            // TODO: Retry logic or alert Dispatch Manager of failure
         }
     }
 }

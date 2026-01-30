@@ -17,4 +17,14 @@ public class GlobalExceptionHandler {
                 .message(ex.getMessage())
                 .build();
     }
+
+    @ExceptionHandler(MeterAlreadyDispatchedException.class)
+    @ResponseStatus(code = HttpStatus.BAD_REQUEST)
+    public CustomizedErrorResponse handleMeterAlreadyDispatchedException(MeterAlreadyDispatchedException ex) {
+        return CustomizedErrorResponse.builder()
+                .statusCode(HttpStatus.BAD_REQUEST.value())
+                .error("DUPLICATE_DISPATCH_COMMAND")
+                .message(ex.getMessage())
+                .build();
+    }
 }
