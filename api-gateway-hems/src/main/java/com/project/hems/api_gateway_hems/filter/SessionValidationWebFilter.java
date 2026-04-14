@@ -123,6 +123,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.ReactiveStringRedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ResponseStatusException;
@@ -184,10 +185,11 @@ public class SessionValidationWebFilter implements WebFilter {
      */
     private Mono<Void> validateSession(Authentication authentication) {
         if (!(authentication instanceof JwtAuthenticationToken jwtAuth)) {
-            log.warn("[v0] Authentication is not JWT: {}", authentication.getClass().getSimpleName());
-            return Mono.error(
-                    new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid authentication type")
-            );
+            // OAuth2AuthenticationToken arrives here right after login redirect.
+            // The JWT cookie was just set — it's not a Bearer token yet, so skip.
+            log.debug("[v0] Skipping session validation for non-JWT auth type: {}",
+                    authentication.getClass().getSimpleName());
+            return Mono.empty();
         }
 
         var jwt = jwtAuth.getToken();
