@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.project.hems.hems_api_contracts.contract.program.Program;
 import com.project.hems.hems_api_contracts.contract.program.ProgramFeignDto;
 import com.project.hems.hems_api_contracts.contract.site.SiteDto;
+import com.project.hems.program_enrollment_manager.config.SiteFeignConfig;
 
-@FeignClient(name = "site-service", path = "/api/v1/site")
+@FeignClient(name = "site-service", path = "/api/v1/site", configuration = SiteFeignConfig.class)
 public interface SiteFeignClientService {
 
         @GetMapping("/fetch-site-by-id/{siteId}")
