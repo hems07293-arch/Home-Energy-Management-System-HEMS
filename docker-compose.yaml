@@ -618,6 +618,8 @@ services:
      - EUREKA_CLIENT_FETCH_REGISTRY=true
      - EUREKA_CLIENT_REGISTER_WITH_EUREKA=true
      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://service-registry-hems:8091/eureka/
+   platform: linux/amd64
+
 #
 #    platform: linux/amd64
   excel-service:
