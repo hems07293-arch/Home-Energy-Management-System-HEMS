@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.UUID;
 
 @Slf4j
-@RequiredArgsConstructor
 @Component
 public class DispatchEvent extends QuartzJobBean {
 
@@ -25,6 +24,10 @@ public class DispatchEvent extends QuartzJobBean {
     private String dispatchEventTopic;
 
     private final KafkaTemplate<String,Object> kafkaTemplate;
+
+    public DispatchEvent(KafkaTemplate<String, Object> kafkaTemplate){
+        this.kafkaTemplate=kafkaTemplate;
+    }
 
     @Override
     protected void executeInternal(JobExecutionContext context) {

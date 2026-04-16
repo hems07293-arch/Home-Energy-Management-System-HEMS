@@ -26,7 +26,7 @@ public class DispatchController {
 
     private final DispatchCommandProducer dispatchCommandProducer;
 
-    @PreAuthorize("hasAuthority('admin:access')")
+    // @PreAuthorize("hasAuthority('admin:access')")
     @Operation(
             summary = "send dispatch command",
             description = "send a dispatch event to the dispatch manager for processing"
