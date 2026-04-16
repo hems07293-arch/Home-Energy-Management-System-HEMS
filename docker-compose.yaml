@@ -651,6 +651,7 @@ services:
       - "spring.datasource.password=Hems#Einfochips"
       - "spring.datasource.driver-class-name=org.postgresql.Driver"
       - "spring.quartz.job-store-type=jdbc"
+      - "spring.quartz.jdbc.initialize-schema=never"
       - "spring.quartz.properties.org.quartz.threadPool.threadCount=5"
       - "spring.quartz.properties.org.quartz.jobStore.driverDelegateClass=org.quartz.impl.jdbcjobstore.PostgreSQLDelegate"
       - "spring.jpa.hibernate.ddl-auto=update"

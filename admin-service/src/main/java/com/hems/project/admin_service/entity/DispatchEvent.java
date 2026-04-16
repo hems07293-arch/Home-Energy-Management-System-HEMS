@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.quartz.QuartzJobBean;
@@ -16,18 +17,15 @@ import java.util.List;
 import java.util.UUID;
 
 @Slf4j
-@Component
+//@Component
 public class DispatchEvent extends QuartzJobBean {
 
 
     @Value("${property.config.kafka.dispatch-event-topic}")
     private String dispatchEventTopic;
 
-    private final KafkaTemplate<String,Object> kafkaTemplate;
-
-    public DispatchEvent(KafkaTemplate<String, Object> kafkaTemplate){
-        this.kafkaTemplate=kafkaTemplate;
-    }
+    @Autowired
+    private KafkaTemplate<String,Object> kafkaTemplate;
 
     @Override
     protected void executeInternal(JobExecutionContext context) {
