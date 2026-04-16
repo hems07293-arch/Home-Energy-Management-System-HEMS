@@ -803,6 +803,8 @@ services:
   
         # EUREKA (use service name, NOT localhost)
         - "eureka.client.service-url.defaultZone=http://service-registry-hems:8091/eureka"
+      platform: linux/amd64
+
     
     
     
