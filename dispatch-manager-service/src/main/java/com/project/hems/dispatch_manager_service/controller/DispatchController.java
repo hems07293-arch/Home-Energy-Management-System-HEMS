@@ -1,5 +1,6 @@
 package com.project.hems.dispatch_manager_service.controller;
 
+import com.project.hems.hems_api_contracts.contract.dispatch.DispatchEventDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.hems.dispatch_manager_service.service.DispatchCommandProducer;
-import com.project.hems.hems_api_contracts.contract.vpp.DispatchEventDto;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

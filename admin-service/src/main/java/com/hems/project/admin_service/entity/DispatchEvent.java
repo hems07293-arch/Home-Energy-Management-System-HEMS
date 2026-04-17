@@ -1,7 +1,7 @@
 package com.hems.project.admin_service.entity;
 
-import com.hems.project.admin_service.dto.DispatchEventDto;
-import com.hems.project.admin_service.dto.DispatchMode;
+import com.project.hems.hems_api_contracts.contract.dispatch.DispatchEventDto;
+import com.project.hems.hems_api_contracts.contract.vpp.DispatchMode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -51,7 +51,7 @@ public class DispatchEvent extends QuartzJobBean {
                 .map(UUID::fromString)
                 .toList();
 
-        DispatchEventDto dto=DispatchEventDto.builder()
+        DispatchEventDto dto= DispatchEventDto.builder()
                 .eventId(eventId)
                 .programId(programId)
                 .eventMode(mode)
@@ -62,7 +62,7 @@ public class DispatchEvent extends QuartzJobBean {
                 .build();
 
         sendDispatchCommandToKafka(dto);
-        
+
     }
 
     private void sendDispatchCommandToKafka(DispatchEventDto dto) {

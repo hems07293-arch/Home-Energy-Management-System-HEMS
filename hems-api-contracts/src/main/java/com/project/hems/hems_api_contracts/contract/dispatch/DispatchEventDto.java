@@ -1,5 +1,6 @@
-package com.hems.project.admin_service.dto;
+package com.project.hems.hems_api_contracts.contract.dispatch;
 
+import com.project.hems.hems_api_contracts.contract.vpp.DispatchMode;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
-@FeignClient(name = "site-service", path = "/api/v1/site")
+//@FeignClient(name = "site-service", path = "/api/v1/site")
+@FeignClient(name = "site-service", url = "http://localhost:8081",path = "/api/v1/site")
 public interface SiteFeignClientService {
 
         @PostMapping("/check-site-available/{siteId}")

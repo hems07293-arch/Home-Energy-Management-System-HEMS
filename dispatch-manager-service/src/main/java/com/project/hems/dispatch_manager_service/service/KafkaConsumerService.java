@@ -1,5 +1,6 @@
 package com.project.hems.dispatch_manager_service.service;
 
+import com.project.hems.hems_api_contracts.contract.dispatch.DispatchEventDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.annotation.RetryableTopic;
@@ -7,7 +8,6 @@ import org.springframework.retry.annotation.Backoff;
 import org.springframework.stereotype.Component;
 
 import com.project.hems.hems_api_contracts.contract.dispatch.DeviceCommand;
-import com.project.hems.hems_api_contracts.contract.vpp.DispatchEventDto;
 import com.project.hems.hems_api_contracts.contract.vpp.SignalForImport;
 
 import lombok.RequiredArgsConstructor;

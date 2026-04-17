@@ -32,6 +32,9 @@ public class DispatchSchedulerService {
             Integer durationMinutes,
             LocalDateTime scheduledTime){
 
+        if (scheduledTime.isBefore(LocalDateTime.now())) {
+            throw new IllegalArgumentException("Scheduled time must be in the future");
+        }
         JobDetail jobDetail = buildJobDetail(programId,siteIds,eventId,mode,targetPower,targetSoc,durationMinutes);        Trigger trigger = buildTrigger(jobDetail,scheduledTime);
 
         try {
@@ -85,7 +88,9 @@ public class DispatchSchedulerService {
                         Date.from(dateTime.atZone(
                                 ZoneId.systemDefault()).toInstant()))
                 .withSchedule(
-                        SimpleScheduleBuilder.simpleSchedule())
+                        SimpleScheduleBuilder.simpleSchedule()
+                                .withRepeatCount(0)  // Fire exactly once
+                                .withMisfireHandlingInstructionFireNow())
                 .build();
     }
 }

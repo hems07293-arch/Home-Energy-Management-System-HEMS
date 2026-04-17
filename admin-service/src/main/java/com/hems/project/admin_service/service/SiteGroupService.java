@@ -276,10 +276,10 @@ public class SiteGroupService {
             throw new RuntimeException("site not available");
         }
 
-         boolean available = programFeignClientService.checkProgramIdIsAvailable(request.getProgramId());
-        if (!available) {
-            throw new RuntimeException("program not available with id"+request.getProgramId());
-        }
+         //boolean available = programFeignClientService.checkProgramIdIsAvailable(request.getProgramId());
+//        if (!available) {
+//            throw new RuntimeException("program not available with id"+request.getProgramId());
+//        }
     }
     @Transactional
     public void scheduleSiteDispatch(SiteDispatchRequestDto request) {
@@ -298,7 +298,7 @@ public class SiteGroupService {
 
     public void handleSiteDispatch(SiteDispatchRequestDto request,String token) {
 
-        validateSiteDispatch(request,token);
+        //validateSiteDispatch(request,token);
 
         scheduleSiteDispatch(request);
     }

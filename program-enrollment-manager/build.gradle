@@ -43,13 +43,12 @@ dependencies {
 	implementation project(':hems-api-contracts')
 	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 	implementation 'org.springframework.boot:spring-boot-starter-amqp'
 	implementation 'org.springframework.cloud:spring-cloud-starter-bus-amqp'
 
 	implementation 'org.apache.poi:poi-ooxml:5.2.5'
-	// runtimeOnly 'com.mysql:mysql-connector-j'
-	runtimeOnly 'org.postgresql:postgresql'
+	 runtimeOnly 'com.mysql:mysql-connector-j'
+	//runtimeOnly 'org.postgresql:postgresql'
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'

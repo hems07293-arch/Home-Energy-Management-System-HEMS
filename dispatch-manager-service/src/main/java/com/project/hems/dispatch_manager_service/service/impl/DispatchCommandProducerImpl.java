@@ -2,13 +2,13 @@ package com.project.hems.dispatch_manager_service.service.impl;
 
 import java.util.UUID;
 
+import com.project.hems.hems_api_contracts.contract.dispatch.DispatchEventDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 import com.project.hems.dispatch_manager_service.service.DispatchCommandProducer;
 import com.project.hems.hems_api_contracts.contract.dispatch.DeviceCommand;
-import com.project.hems.hems_api_contracts.contract.vpp.DispatchEventDto;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
@@ -39,7 +39,7 @@ public class DispatchCommandProducerImpl implements DispatchCommandProducer  {
                     .eventId(bulkEvent.getEventId())
                     .siteId(siteId)
                     .programId(bulkEvent.getProgramId())
-                    .durationMinutes(bulkEvent.getDurationMinutes())
+                    .durationMinutes(Long.valueOf(bulkEvent.getDurationMinutes()))
                     .mode(bulkEvent.getEventMode())
                     .targetPowerW(bulkEvent.getTargetPowerW())
                     .targetSoc(bulkEvent.getTargetSoc())
