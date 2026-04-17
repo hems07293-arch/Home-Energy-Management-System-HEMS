@@ -46,7 +46,7 @@ services:
       RABBITMQ_DEFAULT_USER: user
       RABBITMQ_DEFAULT_PASS: Hems#Einfochips
     ports:
-      - "5672:5672"
+      - "5673:5672"
       - "15672:15672"   # UI dashboard (add this)
     platform: linux/amd64
 
