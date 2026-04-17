@@ -752,8 +752,21 @@ services:
         - "spring.jpa.hibernate.ddl-auto=update"
         
         # Quartz - Use In-Memory (No database needed)
-        - "spring.quartz.job-store-type=memory"
-        - "spring.quartz.jdbc.initialize-database=never"
+        # - "spring.quartz.job-store-type=memory"
+        # - "spring.quartz.jdbc.initialize-database=never"
+
+        - "spring.quartz.job-store-type=jdbc"
+        - "spring.quartz.jdbc.initialize-schema=never"
+
+          # Thread pool
+        - "spring.quartz.properties.org.quartz.threadPool.threadCount=5"
+
+          # JobStore
+        - "spring.quartz.properties.org.quartz.jobStore.class=org.quartz.impl.jdbcjobstore.JobStoreTX"
+        - "spring.quartz.properties.org.quartz.jobStore.driverDelegateClass=org.quartz.impl.jdbcjobstore.PostgreSQLDelegate"
+        - "spring.quartz.properties.org.quartz.jobStore.dataSource=springDS"
+        - "spring.quartz.properties.org.quartz.jobStore.useProperties=false"
+        - "spring.quartz.properties.org.quartz.jobStore.isClustered=false"
         
         # RabbitMQ
         - "spring.rabbitmq.host=rabbitmq-service"
