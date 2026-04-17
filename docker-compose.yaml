@@ -16,7 +16,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: Hems#Einfochips
     ports:
-      - "3306:3306"
+      - "3310:3306"
     volumes:
       - ./db/mysql_init.sql:/docker-entrypoint-initdb.d/01-init.sql
     platform: linux/amd64
